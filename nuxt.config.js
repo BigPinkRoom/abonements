@@ -38,16 +38,23 @@ export default {
   ],
 
   i18n: {
-    vueI18nLoader: true,
+    strategy: 'prefix_except_default',
     defaultLocale: 'ru',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      onlyOnRoot: true,
+    },
     locales: [
       {
         code: 'ru',
         name: 'Russian',
+        file: 'ru-Ru.json',
       },
       {
         code: 'en',
         name: 'English',
+        file: 'en-En.json',
       },
     ],
     vueI18n: i18n,
