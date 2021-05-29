@@ -1,3 +1,5 @@
+import i18n from './config/i18n';
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -36,8 +38,19 @@ export default {
   ],
 
   i18n: {
-    locales: ['en', 'fr', 'es'],
-    defaultLocale: 'en',
+    vueI18nLoader: true,
+    defaultLocale: 'ru',
+    locales: [
+      {
+        code: 'ru',
+        name: 'Russian',
+      },
+      {
+        code: 'en',
+        name: 'English',
+      },
+    ],
+    vueI18n: i18n,
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -46,5 +59,5 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
 
-  serverMiddleware: ['@/api/index'],
+  serverMiddleware: ['@/api'],
 };
