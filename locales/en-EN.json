@@ -1,0 +1,11 @@
+{
+  "pages": {
+    "main": {
+      "title": "Main"
+    },
+    "login": {
+      "title": "Login"
+    }
+  },
+  "message": "Message"
+}
