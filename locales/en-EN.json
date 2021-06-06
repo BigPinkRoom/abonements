@@ -4,8 +4,26 @@
       "title": "Main"
     },
     "login": {
-      "title": "Login"
+      "title": "Sign in"
+    },
+    "registration": {
+      "title": "Sign up"
     }
   },
-  "message": "Message"
+  "forms": {
+    "login": {
+      "title": "Login",
+      "fields": {
+        "email": {
+          "title": "Email",
+          "placeholder": "Enter your email"
+        },
+        "password": {
+          "title": "Password",
+          "placeholder": "Enter your password"
+        }
+      },
+      "submit": "Login"
+    }
+  }
 }
