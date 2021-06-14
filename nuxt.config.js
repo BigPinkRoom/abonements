@@ -63,6 +63,16 @@ export default {
       },
     ],
     vueI18n: i18n,
+    publicRuntimeConfig: {
+      baseURL: process.env.BASE_URL,
+    },
+    privateRuntimeConfig: {
+      sessionSecret: process.env.SESSION_SECRET,
+      dbHost: process.env.DB_HOST,
+      dbUser: process.env.DB_USER,
+      dbPassword: process.env.DB_PASSWORD,
+      dbName: process.env.DB_NAME,
+    },
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
