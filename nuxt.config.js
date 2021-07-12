@@ -19,7 +19,7 @@ export default {
   css: ['@/assets/scss/global.scss', '@/assets/scss/blocks.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: ['@/plugins/message.js'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -36,11 +36,11 @@ export default {
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-    // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios',
-    'nuxt-i18n',
-  ],
+  modules: ['nuxt-helmet', '@nuxtjs/axios', 'nuxt-i18n'],
+
+  helmet: {
+    hidePoweredBy: true,
+  },
 
   i18n: {
     strategy: 'prefix_except_default',
@@ -82,4 +82,13 @@ export default {
   build: {},
 
   serverMiddleware: ['@/server'],
+
+  // devtools: true,
+
+  // vue: {
+  //   config: {
+  //     productionTip: false,
+  //     devtools: true,
+  //   },
+  // },
 };
