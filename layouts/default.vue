@@ -1,55 +1,76 @@
 <template>
-  <div>
-    <Nuxt />
+  <div class="layout">
+    <div class="layout__infobar">
+      <InfoBar v-for="message in allMessages" :id="message.id" :key="message.id" :type="message.type">
+        <template #message>
+          {{ message.message }}
+        </template>
+      </InfoBar>
+    </div>
+
+    <div class="layout__navbar">
+      <NavBar :routes="routes" />
+    </div>
+
+    <div class="layout__main">
+      <Nuxt />
+    </div>
   </div>
 </template>
+<script>
+import { mapGetters } from 'vuex';
+import api from '@/assets/js/api';
+import NavBar from '@/components/Navbar';
+import InfoBar from '@/components/Infobar';
 
-<style>
-html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-}
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
-}
-</style>
+export default {
+  name: 'LayoutDefault',
+  components: {
+    InfoBar,
+    NavBar,
+  },
+  data() {
+    return {
+      routes: [
+        {
+          code: 'main',
+          onlyAdmin: false,
+          forRoles: ['employee', 'guest'],
+        },
+        {
+          code: 'signup',
+          onlyAdmin: false,
+          forRoles: ['guest'],
+        },
+        {
+          code: 'login',
+          onlyAdmin: false,
+          forRoles: ['employee', 'guest'],
+        },
+        {
+          code: 'logout',
+          onlyAdmin: false,
+          forRoles: ['employee', 'guest'],
+          action: this.logout,
+          disabled: true,
+        },
+      ],
+    };
+  },
+  computed: {
+    ...mapGetters('messages', ['allMessages']),
+  },
+  methods: {
+    async logout() {
+      try {
+        const answer = await api.user.logout();
+        this.$nuxt.$router.replace({ path: '/' });
+        this.$showMessage(answer);
+      } catch (error) {
+        this.$showError(error);
+      }
+    },
+  },
+};
+</script>
+<style></style>
