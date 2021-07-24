@@ -1,11 +1,12 @@
 import axios from 'axios';
+import base from '../../constants/base';
 import ApiResponse from './response';
 
 export default class ApiModule {
   async request(url, method, data) {
     const request = {
       method,
-      url,
+      url: `${base.BASE_URL}${url}`,
     };
 
     if (method === 'get') {
@@ -28,7 +29,9 @@ export default class ApiModule {
       const errorMessage = error.response.data.error.message;
       const errorStatus = error.response.status;
 
-      const messageCheck = [errorMessage !== 'undefined', errorMessage !== null, errorMessage !== ''].every((contain) => contain === true);
+      const messageCheck = [errorMessage !== 'undefined', errorMessage !== null, errorMessage !== ''].every(
+        (contain) => contain === true
+      );
 
       console.log('error', error.response);
 
