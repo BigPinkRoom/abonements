@@ -6,8 +6,11 @@
     "login": {
       "title": "Sign in"
     },
-    "registration": {
+    "signup": {
       "title": "Sign up"
+    },
+    "logout": {
+      "title": "logout"
     }
   },
   "forms": {
@@ -24,6 +27,24 @@
         }
       },
       "submit": "Login"
+    },
+    "signup": {
+      "title": "Signup",
+      "fields": {
+        "email": {
+          "title": "Email",
+          "placeholder": "Enter your email"
+        },
+        "password": {
+          "title": "Password",
+          "placeholder": "Enter your password"
+        },
+        "passwordConfirm": {
+          "title": "Confirm password",
+          "placeholder": "Enter your password again"
+        }
+      },
+      "submit": "Sign up"
     }
   }
 }

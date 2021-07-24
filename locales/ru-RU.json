@@ -5,7 +5,46 @@
     },
     "login": {
       "title": "Вход"
+    },
+    "signup": {
+      "title": "Регистрация"
+    },
+    "logout": {
+      "title": "Выйти"
     }
   },
-  "message": "Сообщение"
+  "forms": {
+    "login": {
+      "title": "Войти",
+      "fields": {
+        "email": {
+          "title": "Email",
+          "placeholder": "Введите ваш email"
+        },
+        "password": {
+          "title": "Пароль",
+          "placeholder": "Введите ваш пароль"
+        }
+      },
+      "submit": "Войти"
+    },
+    "signup": {
+      "title": "Регистрация",
+      "fields": {
+        "email": {
+          "title": "Email",
+          "placeholder": "Введите ваш email"
+        },
+        "password": {
+          "title": "Пароль",
+          "placeholder": "Введите ваш пароль"
+        },
+        "passwordConfirm": {
+          "title": "Подтверждение пароля",
+          "placeholder": "Введите ваш пароль ещё раз"
+        }
+      },
+      "submit": "Зарегистрироваться"
+    }
+  }
 }
