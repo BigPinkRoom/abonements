@@ -1,13 +1,13 @@
 <template>
   <div class="container">
-    <MainForm :fields="loginFields" submitText="forms.login.submit">
+    <MainForm :fields="loginFields" submit-text="forms.login.submit">
       <template #title>{{ $t('forms.login.title') }}</template>
     </MainForm>
   </div>
 </template>
 
 <script>
-import MainForm from '@/components/Forms/MainForm';
+import MainForm from '@/components/ui/Forms/MainForm';
 
 export default {
   name: 'Login',
@@ -29,7 +29,7 @@ export default {
           name: 'password',
           type: 'password',
           title: 'forms.login.fields.password.title',
-          placeholder: 'forms.login.fields.email.placeholder',
+          placeholder: 'forms.login.fields.password.placeholder',
         },
       ],
     };
@@ -37,14 +37,14 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .container {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 2.5rem);
 
   background-color: #ccc;
 }
