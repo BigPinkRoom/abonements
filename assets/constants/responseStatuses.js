@@ -1,3 +1,3 @@
 export default {
-  SUCCESSARR: [200, 201],
+  SUCCESS_ARR: [200, 201],
 };

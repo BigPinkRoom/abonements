@@ -6,7 +6,7 @@ export default class apiResponse {
     this.result = null;
     this.message = null;
 
-    if (responseStatuses.SUCCESSARR.find((status) => status === response.status)) {
+    if (responseStatuses.SUCCESS_ARR.find((status) => status === response.status)) {
       this.result = response.data;
     } else {
       this.message = response.message;
