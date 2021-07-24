@@ -6,7 +6,8 @@ export default class ApiModule {
   async request(url, method, data) {
     const request = {
       method,
-      url: `${base.BASE_URL}${url}`,
+      baseURL: base.BASE_URL,
+      url,
     };
 
     if (method === 'get') {
