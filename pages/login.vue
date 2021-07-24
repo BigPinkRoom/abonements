@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <MainForm :fields="loginFields" submit-text="forms.login.submit">
+    <MainForm :fields="loginFields" submit-text="forms.login.submit" @formSubmit="formSubmitHandler">
       <template #title>{{ $t('forms.login.title') }}</template>
     </MainForm>
   </div>
@@ -33,6 +33,26 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    formSubmitHandler(eventForm) {
+      this.$auth.loginWith('cookie', {
+        data: eventForm,
+      });
+      console.log('test', this.createModelLogin(eventForm.target.elements));
+    },
+
+    createModelLogin(fields) {
+      const model = {};
+
+      fields.forEach((item) => {
+        if (item.name) {
+          model[item.name] = item.value;
+        }
+      });
+
+      return model;
+    },
   },
 };
 </script>
