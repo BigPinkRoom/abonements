@@ -1,7 +1,7 @@
 .navbar {
   display: flex;
   width: 100%;
-  padding: 1rem;
+  padding: 0.6rem 1rem;
 
   background-color: $color-green-dark;
 
@@ -26,8 +26,8 @@
     }
 
     & a {
-      color: $color-green;
-
+      color: $color-green-light;
+      line-height: 1.35;
       text-decoration: none;
     }
   }
