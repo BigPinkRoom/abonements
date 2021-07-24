@@ -1,13 +1,12 @@
 import axios from 'axios';
-import base from '../../constants/base';
 import ApiResponse from './response';
 
 export default class ApiModule {
   async request(url, method, data) {
     const request = {
       method,
-      baseURL: base.BASE_URL,
       url,
+      withCredentials: true,
     };
 
     if (method === 'get') {
