@@ -13,19 +13,12 @@
     "test": "jest"
   },
   "dependencies": {
+    "@nuxtjs/auth-next": "5.0.0-1624817847.21691f1",
     "@nuxtjs/axios": "^5.13.1",
-    "axios": "^0.21.1",
-    "bcrypt": "^5.0.1",
-    "connect-flash": "^0.1.1",
     "core-js": "^3.9.1",
-    "express": "^4.17.1",
-    "express-session": "^1.17.2",
-    "helmet": "^4.6.0",
-    "mysql2": "^2.2.5",
     "nuxt": "^2.15.3",
-    "nuxt-i18n": "^6.27.0",
-    "passport": "^0.4.1",
-    "passport-local": "^1.0.0"
+    "nuxt-helmet": "^2.0.0",
+    "nuxt-i18n": "^6.27.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^6.0.0",
@@ -61,7 +54,7 @@
     "source.fixAll.stylelint": true
   },
   "prettier": {
-    "printWidth": 140,
+    "printWidth": 120,
     "singleQuote": true,
     "endOfLine": "auto"
   }
