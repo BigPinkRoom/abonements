@@ -1,4 +1,4 @@
-# abonements
+# abonements-frontend-ssr
 
 ## Build Setup
 
