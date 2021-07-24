@@ -38,12 +38,26 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: ['nuxt-helmet', '@nuxtjs/axios', '@nuxtjs/auth-next', 'nuxt-i18n'],
 
-  // router: {
-  //   middleware: ['auth'],
-  // },
+  axios: {
+    baseURL: 'http://localhost:4000/api/v1',
+  },
 
   helmet: {
     hidePoweredBy: true,
+  },
+
+  auth: {
+    strategies: {
+      cookie: {
+        cookie: {
+          name: 'session',
+        },
+        endpoints: {
+          login: { url: '/auth/login', method: 'post' },
+        },
+      },
+    },
+    tokenType: '',
   },
 
   i18n: {
@@ -69,8 +83,12 @@ export default {
     vueI18n: i18n,
   },
 
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  publicRuntimeConfig: {
+    baseURL: process.env.BASE_URL,
+    // axios: {
+    //   baseURL: process.env.BASE_URL,
+    // },
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
