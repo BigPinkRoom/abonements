@@ -36,7 +36,11 @@ export default {
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['nuxt-helmet', '@nuxtjs/axios', 'nuxt-i18n'],
+  modules: ['nuxt-helmet', '@nuxtjs/axios', '@nuxtjs/auth-next', 'nuxt-i18n'],
+
+  // router: {
+  //   middleware: ['auth'],
+  // },
 
   helmet: {
     hidePoweredBy: true,
@@ -63,16 +67,6 @@ export default {
       },
     ],
     vueI18n: i18n,
-    publicRuntimeConfig: {
-      baseURL: process.env.BASE_URL,
-    },
-    privateRuntimeConfig: {
-      sessionSecret: process.env.SESSION_SECRET,
-      dbHost: process.env.DB_HOST,
-      dbUser: process.env.DB_USER,
-      dbPassword: process.env.DB_PASSWORD,
-      dbName: process.env.DB_NAME,
-    },
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -80,15 +74,4 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
-
-  serverMiddleware: ['@/server'],
-
-  // devtools: true,
-
-  // vue: {
-  //   config: {
-  //     productionTip: false,
-  //     devtools: true,
-  //   },
-  // },
 };
