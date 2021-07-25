@@ -8,7 +8,7 @@
 
 <script>
 import MainForm from '@/components/ui/Forms/MainForm';
-import api from '@/assets/js/api';
+// import api from '~/utils/api';
 
 export default {
   name: 'Signup',
@@ -39,6 +39,27 @@ export default {
           title: 'forms.signup.fields.passwordConfirm.title',
           placeholder: 'forms.signup.fields.passwordConfirm.placeholder',
         },
+        {
+          id: 4,
+          name: 'surname',
+          type: 'text',
+          title: 'forms.signup.fields.surname.title',
+          placeholder: 'forms.signup.fields.surname.placeholder',
+        },
+        {
+          id: 5,
+          name: 'name',
+          type: 'text',
+          title: 'forms.signup.fields.name.title',
+          placeholder: 'forms.signup.fields.name.placeholder',
+        },
+        {
+          id: 6,
+          name: 'patronymic',
+          type: 'text',
+          title: 'forms.signup.fields.patronymic.title',
+          placeholder: 'forms.signup.fields.patronymic.placeholder',
+        },
       ],
     };
   },
@@ -47,7 +68,7 @@ export default {
       const newUser = this.createModelSignup(eventForm.target.elements);
 
       try {
-        const answer = await api.user.signup(newUser);
+        const answer = await this.$api.user.signup(newUser);
         this.$showMessage(answer);
       } catch (error) {
         this.$showError(error);
