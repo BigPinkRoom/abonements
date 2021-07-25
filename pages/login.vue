@@ -35,11 +35,20 @@ export default {
     };
   },
   methods: {
-    formSubmitHandler(eventForm) {
-      this.$auth.loginWith('cookie', {
-        data: eventForm,
-      });
-      console.log('test', this.createModelLogin(eventForm.target.elements));
+    async formSubmitHandler(eventForm) {
+      const loginUser = this.createModelLogin(eventForm.target.elements);
+
+      try {
+        // const answer = await this.$api.user.signup(newUser);
+
+        const answer = await this.$auth.loginWith('cookie', {
+          data: loginUser,
+        });
+
+        this.$showMessage(answer);
+      } catch (error) {
+        this.$showError(error.response.data.error.message);
+      }
     },
 
     createModelLogin(fields) {
