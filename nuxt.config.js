@@ -19,7 +19,7 @@ export default {
   css: ['@/assets/scss/global.scss', '@/assets/scss/blocks.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['@/plugins/message.js'],
+  plugins: ['@/plugins/message.js', '@/plugins/api.js'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
