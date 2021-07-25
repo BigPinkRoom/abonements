@@ -1,12 +1,10 @@
-import axios from 'axios';
+// import axios from 'axios';
 import ApiResponse from './response';
 
 export default class ApiModule {
   async request(url, method, data) {
     const request = {
       method,
-      baseURL: this.context.$config.baseURL,
-      // baseURL: 'http://localhost:4000/api/v1',
       url,
       withCredentials: true,
     };
@@ -18,7 +16,7 @@ export default class ApiModule {
     }
 
     try {
-      const response = await axios(request);
+      const response = await this.context.$axios(request);
 
       console.log('response', await response);
 
