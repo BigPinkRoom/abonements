@@ -42,6 +42,18 @@
         "passwordConfirm": {
           "title": "Confirm password",
           "placeholder": "Enter your password again"
+        },
+        "surname": {
+          "title": "Surname",
+          "placeholder": "Enter your surname"
+        },
+        "name": {
+          "title": "Name",
+          "placeholder": "Enter your name"
+        },
+        "patronymic": {
+          "title": "Patronymic",
+          "placeholder": "Enter your patronymic"
         }
       },
       "submit": "Sign up"

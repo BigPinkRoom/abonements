@@ -42,6 +42,18 @@
         "passwordConfirm": {
           "title": "Подтверждение пароля",
           "placeholder": "Введите ваш пароль ещё раз"
+        },
+        "surname": {
+          "title": "Фамилия",
+          "placeholder": "Введите вашу фамилию"
+        },
+        "name": {
+          "title": "Имя",
+          "placeholder": "Введите ваше имя"
+        },
+        "patronymic": {
+          "title": "Отчество",
+          "placeholder": "Введите ваше отчество"
         }
       },
       "submit": "Зарегистрироваться"
