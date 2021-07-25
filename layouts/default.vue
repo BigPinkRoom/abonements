@@ -1,5 +1,8 @@
 <template>
   <div class="layout">
+    <div class="checkLogin first">{{ $auth.user }}</div>
+    <div class="checkLogin green" v-if="$auth.loggedIn">Login!</div>
+    <div class="checkLogin red" v-if="!$auth.loggedIn">Not login.</div>
     <div class="layout__infobar">
       <InfoBar v-for="message in allMessages" :id="message.id" :key="message.id" :type="message.type">
         <template #message>
@@ -19,9 +22,9 @@
 </template>
 <script>
 import { mapGetters } from 'vuex';
-import api from '@/assets/js/api';
 import NavBar from '@/components/Navbar';
 import InfoBar from '@/components/Infobar';
+import api from '~/utils/api';
 
 export default {
   name: 'LayoutDefault',
@@ -73,4 +76,28 @@ export default {
   },
 };
 </script>
-<style></style>
+<style>
+.checkLogin {
+  position: absolute;
+  top: 50%;
+  z-index: 1000;
+
+  display: block;
+  margin-left: 50px;
+
+  font-weight: 700;
+  font-size: 30px;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}
+
+.first {
+  margin-bottom: 100px;
+}
+</style>
