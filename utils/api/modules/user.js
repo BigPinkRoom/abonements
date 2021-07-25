@@ -8,11 +8,10 @@ export default class User extends ApiModule {
   }
 
   async signup(params) {
-    console.log('this', this);
-    return await this.request('/signup', 'post', params);
+    return await this.request('/auth/signup', 'post', params);
   }
 
   async logout() {
-    return await this.request('/logout', 'get');
+    return await this.request('/auth/logout', 'get');
   }
 }
