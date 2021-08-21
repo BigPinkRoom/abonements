@@ -16,7 +16,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['@/assets/scss/global.scss', '@/assets/scss/blocks.scss'],
+  css: ['@/assets/scss/global.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: ['@/plugins/message.js', '@/plugins/api.js'],
@@ -38,26 +38,41 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: ['nuxt-helmet', '@nuxtjs/axios', '@nuxtjs/auth-next', 'nuxt-i18n'],
 
+  auth: {
+    strategies: {
+      local: false,
+      cookie: {
+        // cookie: {
+        //   name: 'id',
+        // },
+        // token: {
+        //   property: 'connect.sid',
+        //   global: true,
+        // },
+        user: {
+          property: false,
+        },
+        options: {
+          expires: new Date(new Date().getTime() + 20000000000).getTime(),
+          maxAge: 31622400,
+          domain: 'localhost:3000',
+        },
+        endpoints: {
+          login: { url: '/auth/login', method: 'post', withCredentials: true },
+          logout: { url: '/auth/logout', method: 'delete' },
+          user: { url: '/auth/user', method: 'get' },
+        },
+      },
+    },
+  },
+
   axios: {
     baseURL: 'http://localhost:4000/api/v1',
+    credentials: true,
   },
 
   helmet: {
     hidePoweredBy: true,
-  },
-
-  auth: {
-    strategies: {
-      cookie: {
-        cookie: {
-          name: 'session',
-        },
-        endpoints: {
-          login: { url: '/auth/login', method: 'post' },
-        },
-      },
-    },
-    tokenType: '',
   },
 
   i18n: {
