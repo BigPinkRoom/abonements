@@ -16,7 +16,7 @@ export default {
     type: String,
     duration: {
       type: Number,
-      default: 60000,
+      default: 6000,
     },
   },
   data() {
@@ -58,3 +58,22 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.infobar {
+  width: 100%;
+  height: 100%;
+  padding: 0.25rem 1rem;
+
+  color: $color-white;
+  text-align: center;
+
+  background-color: $color-green;
+
+  &__message {
+    &_error {
+      background-color: $color-warning;
+    }
+  }
+}
+</style>

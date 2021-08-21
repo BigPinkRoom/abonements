@@ -47,3 +47,33 @@ export default {
   },
 };
 </script>
+<style lang="scss" scoped>
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.form-content {
+  display: flex;
+  flex-direction: column;
+
+  &__group {
+    display: block;
+    margin-left: 0;
+    padding-left: 0;
+
+    list-style-type: none;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+  }
+
+  &__label {
+    margin-bottom: 0.25rem;
+  }
+}
+</style>
