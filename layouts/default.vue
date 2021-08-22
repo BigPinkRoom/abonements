@@ -1,8 +1,5 @@
 <template>
   <div class="layout">
-    <div class="checkLogin first">{{ $auth.user }}</div>
-    <div class="checkLogin green" v-if="$auth.loggedIn">Login!</div>
-    <div class="checkLogin red" v-if="!$auth.loggedIn">Not login.</div>
     <div class="layout__infobar">
       <InfoBar v-for="message in allMessages" :id="message.id" :key="message.id" :type="message.type">
         <template #message>
@@ -24,7 +21,8 @@
 import { mapGetters } from 'vuex';
 import NavBar from '@/components/Navbar';
 import InfoBar from '@/components/Infobar';
-import api from '~/utils/api';
+import { routesConstants } from '@/constants/routes';
+import { rolesConstants } from '@/constants/roles';
 
 export default {
   name: 'LayoutDefault',
@@ -36,26 +34,26 @@ export default {
     return {
       routes: [
         {
-          code: 'main',
-          onlyAdmin: false,
-          forRoles: ['employee', 'guest'],
+          name: routesConstants.MAIN_PAGE_ROUTE_NAME,
+          forRoles: [rolesConstants.EMPLOYEE_ROLE_NAME, rolesConstants.GUEST_ROLE_NAME],
         },
         {
-          code: 'signup',
-          onlyAdmin: false,
-          forRoles: ['guest'],
+          name: routesConstants.SIGNUP_ROUTE_NAME,
+          forRoles: [rolesConstants.GUEST_ROLE_NAME],
         },
         {
-          code: 'login',
-          onlyAdmin: false,
-          forRoles: ['employee', 'guest'],
+          name: routesConstants.LOGIN_ROUTE_NAME,
+          forRoles: [rolesConstants.GUEST_ROLE_NAME],
         },
         {
-          code: 'logout',
-          onlyAdmin: false,
-          forRoles: ['employee', 'guest'],
+          name: routesConstants.PROFILE_ROUTE_NAME,
+          forRoles: [rolesConstants.EMPLOYEE_ROLE_NAME],
+        },
+        {
+          name: routesConstants.LOGOUT_ROUTE_NAME,
+          forRoles: [rolesConstants.EMPLOYEE_ROLE_NAME],
           action: this.logout,
-          disabled: true,
+          disabledRouteEvent: true,
         },
       ],
     };
@@ -66,38 +64,38 @@ export default {
   methods: {
     async logout() {
       try {
-        const answer = await api.user.logout();
-        this.$nuxt.$router.replace({ path: '/' });
+        const answer = await this.$api.user.logout();
+        // this.$nuxt.$router.replace({ path: '/' });
         this.$showMessage(answer);
       } catch (error) {
         this.$showError(error);
       }
     },
+
+    // TODO
+    testChangeTheme() {
+      document.documentElement.dataset.theme === 'dark'
+        ? (document.documentElement.dataset.theme = 'light')
+        : (document.documentElement.dataset.theme = 'dark');
+    },
   },
 };
 </script>
-<style>
-.checkLogin {
-  position: absolute;
-  top: 50%;
-  z-index: 1000;
+<style lang="scss">
+.layout {
+  height: 100vh;
 
-  display: block;
-  margin-left: 50px;
+  &__infobar {
+    position: fixed;
+    top: 2.5rem;
 
-  font-weight: 700;
-  font-size: 30px;
-}
+    width: 100%;
+  }
 
-.green {
-  color: green;
-}
+  &__navbar {
+  }
 
-.red {
-  color: red;
-}
-
-.first {
-  margin-bottom: 100px;
+  &__main {
+  }
 }
 </style>
