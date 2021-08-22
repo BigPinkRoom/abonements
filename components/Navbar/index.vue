@@ -2,13 +2,13 @@
   <div class="navbar">
     <div class="navbar__left"></div>
     <div class="navbar__right">
-      <div v-for="route in checkedRoutes" :key="route.code" class="navbar__item">
+      <div v-for="route in checkedRoutes" :key="route.name" class="navbar__item">
         <nuxt-link
-          :to="localePath(route.code)"
-          :event="route.disabled ? '' : 'click'"
+          :to="localePath(route.name)"
+          :event="route.disabledRouteEvent ? '' : 'click'"
           @click.native="startAction(route.action)"
         >
-          {{ $t(`pages.${route.code}.title`) }}
+          {{ $t(`pages.${route.name}.title`) }}
         </nuxt-link>
       </div>
       <select id="" v-model="$i18n.locale" class="test__dropdown" name="">
