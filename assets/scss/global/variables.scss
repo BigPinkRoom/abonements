@@ -14,3 +14,37 @@ $color-green-dark: #006400;
 $color-warning: #bc0038;
 
 $color-gray: gray;
+
+:root {
+  --color-primary-lighter: #{$color-green-lighter};
+  --color-primary-light: #{$color-green-light};
+  --color-primary: #{$color-green};
+  --color-primary-dark-light: #{$color-green-dark-light};
+  --color-primary-dark: #{$color-green-dark};
+
+  --color-secondary: #{$color-gray};
+
+  --color-tertiary: #{$color-white};
+
+  --color-warning: #{$color-warning};
+
+  --color-test: #ccc;
+
+  @media screen {
+    &[data-theme='dark'] {
+      --color-primary-lighter: #{$color-green-lighter};
+      --color-primary-light: #{$color-green-light};
+      --color-primary: #{$color-green-lighter};
+      --color-primary-dark-light: #{$color-green-dark-light};
+      --color-primary-dark: #{$color-green-dark};
+
+      --color-secondary: #{$color-gray};
+
+      --color-tertiary: #{$color-white};
+
+      --color-warning: #{$color-warning};
+
+      --color-test: #999;
+    }
+  }
+}
