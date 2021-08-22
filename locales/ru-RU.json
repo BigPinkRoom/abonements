@@ -11,6 +11,9 @@
     },
     "logout": {
       "title": "Выйти"
+    },
+    "profile": {
+      "title": "Профиль"
     }
   },
   "forms": {

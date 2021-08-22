@@ -11,6 +11,9 @@
     },
     "logout": {
       "title": "logout"
+    },
+    "profile": {
+      "title": "profile"
     }
   },
   "forms": {
