@@ -1,19 +1,19 @@
 <template>
   <div class="container">
-    <MainForm :fields="signupFields" submit-text="forms.signup.submit" @formSubmit="showFormSubmit">
+    <form-main :fields="signupFields" submit-text="forms.signup.submit" @formSubmit="showFormSubmit">
       <template #title>{{ $t('forms.signup.title') }}</template>
-    </MainForm>
+    </form-main>
   </div>
 </template>
 
 <script>
-import MainForm from '@/components/ui/Forms/MainForm';
+import FormMain from '@/components/ui/Forms/FormMain';
 // import api from '~/utils/api';
 
 export default {
   name: 'Signup',
   components: {
-    MainForm,
+    FormMain,
   },
   data() {
     return {
@@ -69,6 +69,9 @@ export default {
 
       try {
         const answer = await this.$api.user.signup(newUser);
+
+        console.log('sing up answer', answer);
+
         this.$showMessage(answer);
       } catch (error) {
         this.$showError(error);
