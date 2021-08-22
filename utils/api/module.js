@@ -18,8 +18,6 @@ export default class ApiModule {
     try {
       const response = await this.context.$axios(request);
 
-      console.log('response', await response);
-
       if (response.status) {
         return new ApiResponse(response).result;
       } else {
@@ -32,8 +30,6 @@ export default class ApiModule {
       const messageCheck = [errorMessage !== 'undefined', errorMessage !== null, errorMessage !== ''].every(
         (contain) => contain === true
       );
-
-      console.log('error', error.response);
 
       if (messageCheck) {
         throw new Error(`status: ${errorStatus}, ${errorMessage}.`);
