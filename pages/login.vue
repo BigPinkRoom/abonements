@@ -1,18 +1,18 @@
 <template>
   <div class="container">
-    <MainForm :fields="loginFields" submit-text="forms.login.submit" @formSubmit="formSubmitHandler">
+    <form-main :fields="loginFields" submit-text="forms.login.submit" @formSubmit="formSubmitHandler">
       <template #title>{{ $t('forms.login.title') }}</template>
-    </MainForm>
+    </form-main>
   </div>
 </template>
 
 <script>
-import MainForm from '@/components/ui/Forms/MainForm';
+import FormMain from '@/components/ui/Forms/FormMain';
 
 export default {
   name: 'Login',
   components: {
-    MainForm,
+    FormMain,
   },
   data() {
     return {
@@ -34,20 +34,23 @@ export default {
       ],
     };
   },
+  async fetch() {},
   methods: {
     async formSubmitHandler(eventForm) {
-      const loginUser = this.createModelLogin(eventForm.target.elements);
+      const user = this.createModelLogin(eventForm.target.elements);
 
       try {
-        // const answer = await this.$api.user.signup(newUser);
+        // await this.$auth.loginWith('cookie', {
+        //   data: user,
+        // });
 
-        const answer = await this.$auth.loginWith('cookie', {
-          data: loginUser,
-        });
+        const answer = await this.$api.user.login(user);
 
-        this.$showMessage(answer);
+        console.log('answer', answer);
+        this.$showMessage(this.$auth.loggedIn);
       } catch (error) {
-        this.$showError(error.response.data.error.message);
+        // this.$showError(error.response.data.error.message);
+        this.$showError(error);
       }
     },
 
