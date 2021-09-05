@@ -1,30 +1,31 @@
 <template>
   <div class="abonements-table">
-    <div class="abonements-table__add">
-      <vue-button text="Add new client" @click="emitNewClient" />
-    </div>
     <div class="abonements-table__wrapper">
       <div class="abonements-table__main-table">
-        <vue-table :headRows="headRows" :bodyRows="bodyRows" />
+        <v-table :headRows="headRows" :bodyRows="bodyRows" />
       </div>
 
       <div class="abonements-table__secondary-table">
-        <vue-table :headRows="headRowsSecondary" :bodyRows="bodyRowsSecondary" />
+        <v-table :headRows="headRowsSecondary" :bodyRows="bodyRowsSecondary" />
       </div>
+    </div>
+
+    <div class="abonements-table__add">
+      <v-button text="Add new client" @click="emitNewClient" />
     </div>
   </div>
 </template>
 
 <script>
-import Table from '@/components/ui/Tables/MainTable';
-import Button from '@/components/ui/Buttons/MainButton';
+import Table from '@/components/ui/Tables/TableMain';
+import Button from '@/components/ui/Buttons/ButtonMain';
 
 export default {
   name: 'AbonementsTable',
   middleware: 'auth-employee-access',
   components: {
-    VueButton: Button,
-    VueTable: Table,
+    vButton: Button,
+    vTable: Table,
   },
   data() {
     return {
