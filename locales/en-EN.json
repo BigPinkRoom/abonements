@@ -60,6 +60,48 @@
         }
       },
       "submit": "Sign up"
+    },
+    "client": {
+      "add": {
+        "title": "Add new client",
+        "fields": {
+          "name": {
+            "label": "Client name",
+            "placeholder": "Enter name of new client"
+          },
+          "surname": {
+            "label": "Client surname",
+            "placeholder": "Enter surname of new client"
+          },
+          "patronymic": {
+            "label": "Client patronymic",
+            "placeholder": "Enter patronymic of new client"
+          }
+        }
+      },
+      "edit": {
+        "title": "Edit client",
+        "fields": {
+          "name": {
+            "label": "Client name",
+            "placeholder": "Enter new name of current client"
+          },
+          "surname": {
+            "label": "Client surname",
+            "placeholder": "Enter new surname of current client"
+          },
+          "patronymic": {
+            "label": "Client patronymic",
+            "placeholder": "Enter new patronymic of current client"
+          }
+        }
+      }
+    }
+  },
+  "tables": {
+    "abonementTable": {
+      "title": "Table of abonements",
+      "headings": {}
     }
   }
 }
