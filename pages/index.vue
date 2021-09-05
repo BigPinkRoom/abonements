@@ -1,23 +1,32 @@
 <template>
-  <div class="container">
+  <div class="container main-page">
     <modal-side
       :active="modalSideActive"
       v-show="modalSideActive"
       sticky
       position="left"
       @close="closeModalSide"
-      title="Client edit"
+      :title="$t(`forms.client.${actionType}.fields.name.label`)"
     >
-      <template #content><client-edit title="Client edit" /></template>
+      <template #content><client-edit :client-data="{}" /></template>
+      <template #footer>
+        <footer-main />
+      </template>
     </modal-side>
-    <abonements-table @newClient="openAddNewClient" />
+
+    <div class="main-page__content">
+      <h1 class="main-page__title">{{ $t('tables.abonementTable.title') }}</h1>
+
+      <abonements-table @newClient="openAddNewClient" />
+    </div>
   </div>
 </template>
 
 <script>
 import AbonementsTable from '@/components/AbonementsTable';
 import ModalSide from '@/components/ui/Modals/ModalSide';
-import ClientEdit from '@/components/ui/Modals/ModalSide/components/ClientEdit';
+import ClientEdit from '@/components/ui/Modals/ModalSide/components/ContentClientEdit';
+import FooterMain from '@/components/ui/Modals/ModalSide/components/FooterMain';
 
 export default {
   name: 'Index',
@@ -26,14 +35,20 @@ export default {
     AbonementsTable,
     ModalSide,
     ClientEdit,
+    FooterMain,
   },
   data() {
     return {
       modalSideActive: false,
+      clientData: null,
     };
   },
   async fetch() {},
-  computed: {},
+  computed: {
+    actionType() {
+      return this.clientData ? 'edit' : 'add';
+    },
+  },
   methods: {
     openAddNewClient() {
       this.modalSideActive = true;
@@ -54,5 +69,15 @@ export default {
   height: calc(100vh - 2.5rem);
 
   background-color: var(--color-test);
+}
+
+.main-page {
+  &__content {
+    overflow-x: hidden;
+  }
+
+  &__title {
+    text-align: center;
+  }
 }
 </style>
