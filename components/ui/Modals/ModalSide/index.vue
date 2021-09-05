@@ -70,6 +70,9 @@ export default {
 .side-modal {
   position: fixed;
 
+  display: flex;
+  flex-direction: column;
+
   flex-shrink: 0;
   width: 300px;
   height: 100%;
@@ -93,6 +96,16 @@ export default {
   }
 
   &_title {
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+    padding: 0.25rem;
+
+    // TODO
+    border-top: 1px solid black;
   }
 }
 </style>
