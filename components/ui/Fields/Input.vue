@@ -1,6 +1,14 @@
 <template>
   <div class="field field_input">
-    <input :ref="id" :value="value" :type="type" :name="name" :placeholder="placeholder" @input="updateValue($event.target.value)" />
+    <input
+      class="field__input"
+      :ref="id"
+      :value="value"
+      :type="type"
+      :name="name"
+      :placeholder="placeholder"
+      @input="updateValue($event.target.value)"
+    />
   </div>
 </template>
 
@@ -30,3 +38,10 @@ export default {
   },
 };
 </script>
+<style lang="scss" scoped>
+.field {
+  &__input {
+    width: 100%;
+  }
+}
+</style>

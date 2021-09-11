@@ -6,9 +6,9 @@
       sticky
       position="left"
       @close="closeModalSide"
-      :title="$t(`forms.client.${actionType}.fields.name.label`)"
+      :title="$t(`forms.client.${actionType}.title`)"
     >
-      <template #content><client-edit :client-data="{}" /></template>
+      <template #content><client-edit :selected-client-data="null" /></template>
       <template #footer>
         <footer-main />
       </template>
@@ -40,13 +40,13 @@ export default {
   data() {
     return {
       modalSideActive: false,
-      clientData: null,
+      selectedClientData: null,
     };
   },
   async fetch() {},
   computed: {
     actionType() {
-      return this.clientData ? 'edit' : 'add';
+      return this.selectedClientData ? 'edit' : 'add';
     },
   },
   methods: {
