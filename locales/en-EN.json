@@ -64,37 +64,127 @@
     "client": {
       "add": {
         "title": "Add new client",
-        "fields": {
-          "name": {
-            "label": "Client name",
-            "placeholder": "Enter name of new client"
+        "fieldsets": {
+          "client": {
+            "label": "Client",
+            "fields": {
+              "name": {
+                "label": "Name",
+                "placeholder": "Ivan"
+              },
+              "surname": {
+                "label": "Surname",
+                "placeholder": "Ivanov"
+              },
+              "patronymic": {
+                "label": "Patronymic",
+                "placeholder": "Ivanovich"
+              },
+              "gender": {
+                "label": "Gender",
+                "options": {
+                  "0": "boy",
+                  "1": "girl"
+                }
+              },
+              "address": {
+                "label": "Adress",
+                "placeholder": "Moskow, Kaluzhskaya Street 1, 1"
+              }
+            }
           },
-          "surname": {
-            "label": "Client surname",
-            "placeholder": "Enter surname of new client"
+          "relatives": {
+            "label": "Relatives",
+            "fields": {
+              "name": {
+                "label": "Name",
+                "placeholder": "Helen"
+              },
+              "surname": {
+                "label": "Surname",
+                "placeholder": "Ivanova"
+              },
+              "patronymic": {
+                "label": "Patronymic",
+                "placeholder": "Vladimirovna"
+              },
+              "type": {
+                "label": "Realtive type",
+                "options": {
+                  "mother": "Mother",
+                  "father": "Father",
+                  "grandMother": "Grandmother",
+                  "grandFather": "Grandfather",
+                  "brother": "Brother",
+                  "sister": "Sister",
+                  "aunt": "Aunt",
+                  "uncle": "Uncle",
+                  "cousin_brother": "Cousin brother",
+                  "cousin_sister": "Cousin sister",
+                  "other": "Other relative"
+                }
+              },
+              "telephone": {
+                "label": "Telephone number",
+                "placeholder": "+79001234567"
+              }
+            }
           },
-          "patronymic": {
-            "label": "Client patronymic",
-            "placeholder": "Enter patronymic of new client"
+          "abonement": {
+            "label": "Abonement",
+            "fields": {
+              "id": {
+                "label": "Abonement id"
+              },
+              "quantity": {
+                "label": "Quantity of visits"
+              },
+              "startDate": { "label": "Start date" },
+              "endDate": { "label": "Expiration date" }
+            }
           }
-        }
+        },
+        "fields": {}
       },
       "edit": {
         "title": "Edit client",
-        "fields": {
-          "name": {
-            "label": "Client name",
-            "placeholder": "Enter new name of current client"
+        "fieldsets": {
+          "client": {
+            "label": "Client",
+            "fields": {
+              "name": {
+                "label": "Client name",
+                "placeholder": "Enter name"
+              },
+              "surname": {
+                "label": "Client surname",
+                "placeholder": "Enter surname"
+              },
+              "patronymic": {
+                "label": "Client patronymic",
+                "placeholder": "Enter patronymic"
+              },
+              "gender": {
+                "label": "Gender",
+                "options": {
+                  "0": "boy",
+                  "1": "girl"
+                }
+              },
+              "address": {
+                "label": "Adress",
+                "placeholder": "Enter client address"
+              }
+            }
           },
-          "surname": {
-            "label": "Client surname",
-            "placeholder": "Enter new surname of current client"
+          "relatives": {
+            "label": "Relatives"
           },
-          "patronymic": {
-            "label": "Client patronymic",
-            "placeholder": "Enter new patronymic of current client"
+          "abonement": {
+            "label": "Active abonements"
           }
-        }
+        },
+        "fields": {}
       }
     }
   },

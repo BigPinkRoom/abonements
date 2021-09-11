@@ -64,37 +64,115 @@
     "client": {
       "add": {
         "title": "Добавить нового клиента",
-        "fields": {
-          "name": {
-            "label": "Имя клиента",
-            "placeholder": "Введите имя нового клиента"
+        "fieldsets": {
+          "client": {
+            "label": "Клиент",
+            "fields": {
+              "name": {
+                "label": "Имя",
+                "placeholder": "Иван"
+              },
+              "surname": {
+                "label": "Фамилия",
+                "placeholder": "Иванов"
+              },
+              "patronymic": {
+                "label": "Отчество",
+                "placeholder": "Иванович"
+              },
+              "gender": {
+                "label": "Пол",
+                "options": {
+                  "0": "Мальчик",
+                  "1": "Девочка"
+                }
+              },
+              "address": {
+                "label": "Адрес",
+                "placeholder": "Москва, ул. Калужская 1, кв 1"
+              }
+            }
           },
-          "surname": {
-            "label": "Фамилия клиента",
-            "placeholder": "Введите фамилию нового клиента"
+          "relatives": {
+            "label": "Родственники",
+            "fields": {
+              "name": {
+                "label": "Имя",
+                "placeholder": "Елена"
+              },
+              "surname": {
+                "label": "Фамилия",
+                "placeholder": "Иванова"
+              },
+              "patronymic": {
+                "label": "Отчество",
+                "placeholder": "Владимировна"
+              },
+              "type": {
+                "label": "Тип родственника",
+                "options": {
+                  "mother": "Мама",
+                  "father": "Папа",
+                  "grandMother": "Бабушка",
+                  "grandFather": "Дедушка",
+                  "brother": "Брат",
+                  "sister": "Сестра",
+                  "aunt": "Тётя",
+                  "uncle": "Дядя",
+                  "cousin_brother": "Двоюродный брат",
+                  "cousin_sister": "Двоюродная сестра",
+                  "other": "Другой"
+                }
+              },
+              "telephone": {
+                "label": "Номер телефона",
+                "placeholder": "+79001234567"
+              }
+            }
           },
-          "patronymic": {
-            "label": "Отчество клиента",
-            "placeholder": "Введите отчество нового клиента"
+          "abonement": {
+            "label": "Абонемент",
+            "fields": {
+              "id": {
+                "label": "№ абонемента"
+              },
+              "quantity": {
+                "label": "Кол-во занятий"
+              },
+              "startDate": { "label": "Дата начала" },
+              "endDate": { "label": "Дата окончания" }
+            }
           }
         }
       },
       "edit": {
         "title": "Редактировать клиента",
-        "fields": {
-          "name": {
-            "label": "Имя клиента",
-            "placeholder": "Введите новое имя для текущего клиента"
+        "fieldsets": {
+          "client": {
+            "label": "Клиент",
+            "fields": {
+              "name": {
+                "label": "Имя клиента",
+                "placeholder": "Введите имя"
+              },
+              "surname": {
+                "label": "Фамилия клиента",
+                "placeholder": "Введите фамилию"
+              },
+              "patronymic": {
+                "label": "Отчество клиента",
+                "placeholder": "Введите отчество"
+              }
+            }
           },
-          "surname": {
-            "label": "Фамилия клиента",
-            "placeholder": "Введите новую фамилию для текущего клиента"
+          "relatives": {
+            "label": "Родственики"
           },
-          "patronymic": {
-            "label": "Отчество клиента",
-            "placeholder": "Введите новое отчество для текущего клиента"
+          "abonement": {
+            "label": "Абонементы"
           }
-        }
+        },
+        "fields": {}
       }
     }
   },
