@@ -72,10 +72,10 @@ export default {
 
   display: flex;
   flex-direction: column;
-
   flex-shrink: 0;
   width: 300px;
   height: 100%;
+  padding: 0.75rem;
 
   background-color: #fff;
 
@@ -95,7 +95,12 @@ export default {
     right: 0;
   }
 
-  &_title {
+  &__title {
+    margin-bottom: 0.75rem;
+  }
+
+  &__content {
+    overflow: scroll;
   }
 
   &__footer {
