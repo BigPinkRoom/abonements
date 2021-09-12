@@ -20,7 +20,8 @@ export default {
     },
   },
   methods: {
-    clickHandler() {
+    clickHandler(event) {
+      event.preventDefault();
       this.$emit('click');
     },
   },
