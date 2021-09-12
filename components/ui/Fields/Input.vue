@@ -1,8 +1,8 @@
 <template>
-  <div class="field field_input">
+  <div class="field">
     <input
       class="field__input"
-      :ref="id"
+      :id="id"
       :value="value"
       :type="type"
       :name="name"
