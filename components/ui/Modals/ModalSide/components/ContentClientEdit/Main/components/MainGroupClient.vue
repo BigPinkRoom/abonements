@@ -2,37 +2,38 @@
   <fieldset class="client-main__fieldset">
     <legend>{{ $t(`forms.client.${actionType}.fieldsets.client.label`) }}</legend>
 
-    <label for="clientName">{{ $t(`forms.client.${actionType}.fieldsets.client.fields.name.label`) }}</label>
+    <label :for="`clientSurname_${_uid}`">{{
+      $t(`forms.client.${actionType}.fieldsets.client.fields.surname.label`)
+    }}</label>
     <v-input
-      id="clientName"
-      type="text"
-      :placeholder="$t(`forms.client.${actionType}.fieldsets.client.fields.name.placeholder`)"
-    ></v-input>
-
-    <label for="clientSurname">{{ $t(`forms.client.${actionType}.fieldsets.client.fields.surname.label`) }}</label>
-    <v-input
-      id="clientSurname"
+      :id="`clientSurname_${_uid}`"
       type="text"
       :placeholder="$t(`forms.client.${actionType}.fieldsets.client.fields.surname.placeholder`)"
     ></v-input>
 
-    <label for="clientPatronymic">{{
+    <label :for="`clientName_${_uid}`">{{ $t(`forms.client.${actionType}.fieldsets.client.fields.name.label`) }}</label>
+    <v-input
+      :id="`clientName_${_uid}`"
+      type="text"
+      :placeholder="$t(`forms.client.${actionType}.fieldsets.client.fields.name.placeholder`)"
+    ></v-input>
+
+    <label :for="`clientPatronymic_${_uid}`">{{
       $t(`forms.client.${actionType}.fieldsets.client.fields.patronymic.label`)
     }}</label>
     <v-input
-      id="clientPatronymic"
+      :id="`clientPatronymic_${_uid}`"
       type="text"
       :placeholder="$t(`forms.client.${actionType}.fieldsets.client.fields.patronymic.placeholder`)"
     ></v-input>
 
-    <label for="clientGender">{{ $t(`forms.client.${actionType}.fieldsets.client.fields.gender.label`) }}</label>
-    <v-input id="clientGender" type="text"></v-input>
-
-    <label for="clientAddress">{{ $t(`forms.client.${actionType}.fieldsets.client.fields.address.label`) }}</label>
+    <label :for="`clientBirthday_${_uid}`">{{
+      $t(`forms.client.${actionType}.fieldsets.client.fields.birthday.label`)
+    }}</label>
     <v-input
-      id="clientAddress"
+      :id="`clientBirthday_${_uid}`"
       type="text"
-      :placeholder="$t(`forms.client.${actionType}.fieldsets.client.fields.address.placeholder`)"
+      :placeholder="$t(`forms.client.${actionType}.fieldsets.client.fields.birthday.placeholder`)"
     ></v-input>
   </fieldset>
 </template>
@@ -49,6 +50,9 @@ export default {
     actionType: {
       type: String,
     },
+  },
+  data() {
+    return {};
   },
 };
 </script>

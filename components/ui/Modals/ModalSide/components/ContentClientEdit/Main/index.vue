@@ -1,12 +1,39 @@
 <template>
   <form class="client-main">
-    <fieldset-client :action-type="actionType" />
-    <fieldset-abonements :action-type="actionType" />
-    <fieldset-relatives :action-type="actionType" />
+    <div class="client-main__item" v-for="(client, index) in clientsList" :key="index">
+      <fieldset-client :action-type="actionType" />
+    </div>
+
+    <div class="client-main__item">
+      <v-button
+        :text="$t(`forms.client.${actionType}.fields.addOneMoreClient.label`)"
+        @click="addOneMoreClientHandler"
+      />
+    </div>
+
+    <div class="client-main__item">
+      <fieldset-relatives :action-type="actionType" />
+    </div>
+
+    <div class="client-main__item">
+      <v-checkbox
+        id="mainAbonementCheckbox"
+        name="mainAbonementCheckbox"
+        :label="$t(`forms.client.${actionType}.fields.abonementBinding.label`)"
+        checked
+        @checkboxChange="checkboxAbonementHandler"
+      />
+    </div>
+
+    <div class="client-main__item">
+      <fieldset-abonements :action-type="actionType" v-if="showAbonements" />
+    </div>
   </form>
 </template>
 
 <script>
+import vButton from '@/components/ui/Buttons/ButtonMain';
+import vCheckbox from '@/components/ui/Checkboxes/MainCheckbox';
 import FieldsetClient from './components/MainGroupClient';
 import FieldsetAbonements from './components/MainGroupAbonements';
 import FieldsetRelatives from './components/MainGroupRelatives';
@@ -14,6 +41,8 @@ import FieldsetRelatives from './components/MainGroupRelatives';
 export default {
   name: 'ClientEdit',
   components: {
+    vButton,
+    vCheckbox,
     FieldsetClient,
     FieldsetAbonements,
     FieldsetRelatives,
@@ -23,36 +52,36 @@ export default {
       type: Object,
     },
   },
+  data() {
+    return {
+      showAbonements: true,
+      clientsList: [0],
+    };
+  },
   computed: {
     actionType() {
       return this.selectedClientData ? 'edit' : 'add';
+    },
+  },
+  methods: {
+    addOneMoreClientHandler() {
+      this.clientsList.push(true);
+    },
+    checkboxAbonementHandler(value) {
+      this.showAbonements = value;
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.client-main__fieldset {
-  padding: 0.75rem;
-}
-
-.client-main-abonement {
-  &__row {
-    display: flex;
-    flex-direction: row;
-    flex-grow: 0;
+.client-main {
+  &__item {
+    margin-bottom: 0.75rem;
   }
 
-  &__column {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-
-    margin-right: 0.75rem;
-  }
-
-  &__column:last-child {
-    margin-right: 0;
+  &__item:last-child {
+    margin-bottom: 0;
   }
 }
 </style>
