@@ -1,7 +1,7 @@
 <template>
   <div class="footer-main">
-    <v-button class="footer-main__left" :text="leftText" @click="emitHandlerLeft" />
-    <v-button class="footer-main__right" :text="rightText" @click="emitHandlerRight" />
+    <v-button class="footer-main__left" :text="leftText" @click="clickHandlerLeft" />
+    <v-button class="footer-main__right" :text="rightText" @click="clickHandlerRight" />
   </div>
 </template>
 
@@ -26,15 +26,14 @@ export default {
         return 'Cancel';
       },
     },
+  },
+  methods: {
+    clickHandlerLeft() {
+      this.$emit('clickLeft');
+    },
 
-    methods: {
-      clickHandlerLeft() {
-        this.$emit('clickLeft');
-      },
-
-      clickHandlerRight() {
-        this.$emit('clickRight');
-      },
+    clickHandlerRight() {
+      this.$emit('clickRight');
     },
   },
 };
