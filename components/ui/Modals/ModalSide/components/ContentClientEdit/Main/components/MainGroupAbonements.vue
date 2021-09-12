@@ -36,7 +36,7 @@
 
 <script>
 import vInput from '@/components/ui/Fields/Input';
-import vRadioButton from '@/components/ui/RadioButtons/mainRadioButton.vue';
+import vRadioButton from '@/components/ui/RadioButtons/MainRadioButton';
 
 export default {
   name: 'MainGroupAbonements',
