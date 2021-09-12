@@ -68,59 +68,36 @@
           "client": {
             "label": "Client",
             "fields": {
-              "name": {
-                "label": "Name",
-                "placeholder": "Ivan"
-              },
               "surname": {
                 "label": "Surname",
                 "placeholder": "Ivanov"
+              },
+              "name": {
+                "label": "Name",
+                "placeholder": "Ivan"
               },
               "patronymic": {
                 "label": "Patronymic",
                 "placeholder": "Ivanovich"
               },
-              "gender": {
-                "label": "Gender",
-                "options": {
-                  "0": "boy",
-                  "1": "girl"
-                }
-              },
-              "address": {
-                "label": "Adress",
-                "placeholder": "Moskow, Kaluzhskaya Street 1, 1"
+              "birthday": {
+                "label": "Birthday",
+                "placeholder": "01.01.2018"
               }
             }
           },
           "relatives": {
-            "label": "Relatives",
+            "label": "Responsible parent",
             "fields": {
               "name": {
                 "label": "Name",
                 "placeholder": "Helen"
               },
-              "surname": {
-                "label": "Surname",
-                "placeholder": "Ivanova"
-              },
-              "patronymic": {
-                "label": "Patronymic",
-                "placeholder": "Vladimirovna"
-              },
               "type": {
-                "label": "Realtive type",
+                "label": "Relative type",
                 "options": {
                   "mother": "Mother",
                   "father": "Father",
-                  "grandMother": "Grandmother",
-                  "grandFather": "Grandfather",
-                  "brother": "Brother",
-                  "sister": "Sister",
-                  "aunt": "Aunt",
-                  "uncle": "Uncle",
-                  "cousin_brother": "Cousin brother",
-                  "cousin_sister": "Cousin sister",
                   "other": "Other relative"
                 }
               },
@@ -133,6 +110,14 @@
           "abonement": {
             "label": "Abonement",
             "fields": {
+              "type": {
+                "new": {
+                  "label": "New"
+                },
+                "existed": {
+                  "label": "Existed"
+                }
+              },
               "id": {
                 "label": "Abonement id"
               },
@@ -144,7 +129,14 @@
             }
           }
         },
-        "fields": {}
+        "fields": {
+          "addOneMoreClient": {
+            "label": "+ one more child"
+          },
+          "abonementBinding": {
+            "label": "Bind abonement"
+          }
+        }
       },
       "edit": {
         "title": "Edit client",
@@ -163,17 +155,6 @@
               "patronymic": {
                 "label": "Client patronymic",
                 "placeholder": "Enter patronymic"
-              },
-              "gender": {
-                "label": "Gender",
-                "options": {
-                  "0": "boy",
-                  "1": "girl"
-                }
-              },
-              "address": {
-                "label": "Adress",
-                "placeholder": "Enter client address"
               }
             }
           },

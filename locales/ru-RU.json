@@ -63,64 +63,41 @@
     },
     "client": {
       "add": {
-        "title": "Добавить нового клиента",
+        "title": "Добавить клиента",
         "fieldsets": {
           "client": {
             "label": "Клиент",
             "fields": {
-              "name": {
-                "label": "Имя",
-                "placeholder": "Иван"
-              },
               "surname": {
                 "label": "Фамилия",
                 "placeholder": "Иванов"
+              },
+              "name": {
+                "label": "Имя",
+                "placeholder": "Иван"
               },
               "patronymic": {
                 "label": "Отчество",
                 "placeholder": "Иванович"
               },
-              "gender": {
-                "label": "Пол",
-                "options": {
-                  "0": "Мальчик",
-                  "1": "Девочка"
-                }
-              },
-              "address": {
-                "label": "Адрес",
-                "placeholder": "Москва, ул. Калужская 1, кв 1"
+              "birthday": {
+                "label": "День рождения",
+                "placeholder": "01.01.2018"
               }
             }
           },
           "relatives": {
-            "label": "Родственники",
+            "label": "Ответственный родитель",
             "fields": {
               "name": {
                 "label": "Имя",
                 "placeholder": "Елена"
               },
-              "surname": {
-                "label": "Фамилия",
-                "placeholder": "Иванова"
-              },
-              "patronymic": {
-                "label": "Отчество",
-                "placeholder": "Владимировна"
-              },
               "type": {
-                "label": "Тип родственника",
+                "label": "Тип родителя",
                 "options": {
                   "mother": "Мама",
                   "father": "Папа",
-                  "grandMother": "Бабушка",
-                  "grandFather": "Дедушка",
-                  "brother": "Брат",
-                  "sister": "Сестра",
-                  "aunt": "Тётя",
-                  "uncle": "Дядя",
-                  "cousin_brother": "Двоюродный брат",
-                  "cousin_sister": "Двоюродная сестра",
                   "other": "Другой"
                 }
               },
@@ -133,6 +110,14 @@
           "abonement": {
             "label": "Абонемент",
             "fields": {
+              "type": {
+                "new": {
+                  "label": "Новый"
+                },
+                "existed": {
+                  "label": "Существующий"
+                }
+              },
               "id": {
                 "label": "№ абонемента"
               },
@@ -142,6 +127,14 @@
               "startDate": { "label": "Дата начала" },
               "endDate": { "label": "Дата окончания" }
             }
+          }
+        },
+        "fields": {
+          "addOneMoreClient": {
+            "label": "+ ещё один ребенок"
+          },
+          "abonementBinding": {
+            "label": "Привязать абонемент"
           }
         }
       },
@@ -166,7 +159,7 @@
             }
           },
           "relatives": {
-            "label": "Родственики"
+            "label": "Родственники"
           },
           "abonement": {
             "label": "Абонементы"
