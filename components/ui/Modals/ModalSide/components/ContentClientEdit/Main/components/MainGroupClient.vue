@@ -1,5 +1,9 @@
 <template>
   <fieldset class="client-main__fieldset">
+    <div class="client-main__close" v-if="closeButton">
+      <v-close-button @click="close" />
+    </div>
+
     <legend>{{ $t(`forms.client.${actionType}.fieldsets.client.label`) }}</legend>
 
     <label :for="`clientSurname_${uuid}`">{{
@@ -41,15 +45,20 @@
 <script>
 import vInput from '@/components/ui/Fields/Input';
 import { uuid } from 'vue-uuid';
+import vCloseButton from '@/components/ui/Buttons/ButtonClose.vue';
 
 export default {
   name: 'MainGroupClient',
   components: {
     vInput,
+    vCloseButton,
   },
   props: {
     actionType: {
       type: String,
+    },
+    closeButton: {
+      type: Boolean,
     },
   },
   data() {
@@ -57,8 +66,26 @@ export default {
       uuid: '',
     };
   },
+  methods: {
+    close() {
+      this.$emit('close');
+    },
+  },
   mounted() {
     this.uuid = uuid.v4();
   },
 };
 </script>
+<style lang="scss" scoped>
+.client-main {
+  &__fieldset {
+    position: relative;
+  }
+
+  &__close {
+    position: absolute;
+    top: -5px;
+    right: 0;
+  }
+}
+</style>
