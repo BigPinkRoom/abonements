@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  name: 'RadioButton',
+  name: 'MainCheckbox',
   props: {
     checked: {
       type: Boolean,
@@ -34,10 +34,7 @@ export default {
   },
   computed: {
     classObject() {
-      const obj = {
-        // 'radio-button_row': this.direction === 'row',
-        // 'radio-button_column': this.direction === 'column',
-      };
+      const obj = {};
 
       return obj;
     },
