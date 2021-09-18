@@ -1,7 +1,7 @@
 <template>
   <form class="client-main">
     <div class="client-main__item" v-for="(client, index) in clientsList" :key="index">
-      <fieldset-client :action-type="actionType" />
+      <fieldset-client :action-type="actionType" :closeButton="addClose(index)" @close="deleteClient(index)" />
     </div>
 
     <div class="client-main__item">
@@ -39,7 +39,7 @@ import FieldsetAbonements from './components/MainGroupAbonements';
 import FieldsetRelatives from './components/MainGroupRelatives';
 
 export default {
-  name: 'ClientEdit',
+  name: 'ClientEditMain',
   components: {
     vButton,
     vCheckbox,
@@ -69,6 +69,12 @@ export default {
     },
     checkboxAbonementHandler(value) {
       this.showAbonements = value;
+    },
+    addClose(index) {
+      return Number(index) !== 0;
+    },
+    deleteClient(index) {
+      this.clientsList.splice(index, 1);
     },
   },
 };
