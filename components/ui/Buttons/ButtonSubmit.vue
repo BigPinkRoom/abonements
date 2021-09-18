@@ -1,5 +1,5 @@
 <template>
-  <input type="submit" value="text" :ref="id" @click="clickHandler" class="button" :class="styleType" />
+  <input type="submit" value="text" :id="id" @click="clickHandler" class="button" :class="styleType" />
 </template>
 
 <script>
