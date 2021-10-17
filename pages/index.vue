@@ -15,7 +15,7 @@
     </modal-side>
 
     <div class="main-page__content">
-      <h1 class="main-page__title">{{ $t('tables.abonementTable.title') }}</h1>
+      <h1 class="main-page__title">{{ $t('tables.abonementTableFull.title') }}</h1>
 
       <abonements-table @newClient="openAddNewClient" />
     </div>
@@ -68,7 +68,7 @@ export default {
   width: 100%;
   height: calc(100vh - 2.5rem);
 
-  background-color: var(--color-test);
+  background-color: var(--color-white);
 }
 
 .main-page {

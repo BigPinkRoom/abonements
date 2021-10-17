@@ -30,7 +30,7 @@ export default {
   width: 100%;
   height: calc(100vh - 2.5rem);
 
-  background-color: var(--color-test);
+  background-color: var(--color-white);
 }
 
 .checkLogin {
