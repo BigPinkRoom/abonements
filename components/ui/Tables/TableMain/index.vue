@@ -3,7 +3,7 @@
     <thead>
       <tr v-for="row in headRows" :key="row.id" :class="row.class">
         <th v-for="column in row.columns" :key="column.id">
-          {{ column.text }}
+          {{ checkI18n(column) }}
         </th>
       </tr>
     </thead>
@@ -27,8 +27,20 @@ export default {
     headRows: {
       type: Array,
     },
+    headRowsI18n: {
+      type: String,
+    },
     bodyRows: {
       type: Array,
+    },
+  },
+  methods: {
+    checkI18n(column) {
+      if (this.headRowsI18n) {
+        return column.code ? this.$t(`${this.headRowsI18n}.${column.code}.title`) : '';
+      } else {
+        return column.text;
+      }
     },
   },
 };
