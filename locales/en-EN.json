@@ -170,9 +170,28 @@
     }
   },
   "tables": {
-    "abonementTable": {
+    "abonementTableFull": {
       "title": "Table of abonements",
-      "headings": {}
+      "columns": {
+        "dateStart": {
+          "title": "Activation date"
+        },
+        "dateEnd": {
+          "title": "Expiration date"
+        },
+        "clients": {
+          "title": "Clients"
+        },
+        "visitsQuantity": {
+          "title": "All visits"
+        },
+        "visitsLeft": {
+          "title": "Left visits"
+        },
+        "number": {
+          "title": "Number"
+        }
+      }
     }
   }
 }

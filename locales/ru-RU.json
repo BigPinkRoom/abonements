@@ -170,9 +170,28 @@
     }
   },
   "tables": {
-    "abonementTable": {
+    "abonementTableFull": {
       "title": "Таблица абонементов",
-      "headings": {}
+      "columns": {
+        "dateStart": {
+          "title": "Дата активации"
+        },
+        "dateEnd": {
+          "title": "Осталось занятий"
+        },
+        "clients": {
+          "title": "Ф.И. Ребенка"
+        },
+        "visitsQuantity": {
+          "title": "Всего занятий"
+        },
+        "visitsLeft": {
+          "title": "№ абонемента"
+        },
+        "number": {
+          "title": "Номер"
+        }
+      }
     }
   }
 }
