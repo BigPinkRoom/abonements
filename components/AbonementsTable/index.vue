@@ -2,23 +2,34 @@
   <div class="abonements-table">
     <div class="abonements-table__wrapper">
       <div class="abonements-table__main-table">
-        <v-table :headRows="headRows" :bodyRows="bodyRows" />
+        <v-table :headRows="headRows" headRowsI18n="tables.abonementTableFull.columns" :bodyRows="bodyRows" />
       </div>
 
       <div class="abonements-table__secondary-table">
-        <v-table :headRows="headRowsSecondary" :bodyRows="bodyRowsSecondary" />
+        <v-table :headRows="headRowsEvents" :bodyRows="bodyRowsEvents" />
       </div>
     </div>
 
     <div class="abonements-table__add">
       <v-button text="Add new client" @click="emitNewClient" />
     </div>
+
+    <button @click="testCliack">test</button>
   </div>
 </template>
 
 <script>
+import { DateTime } from 'luxon';
 import Table from '@/components/ui/Tables/TableMain';
 import Button from '@/components/ui/Buttons/ButtonMain';
+import AbonementFullModel from '@/utils/api/models/abonementFullModel';
+import { columnsHeadersEnums } from '@/constants/enums/abonementsTableFull';
+import {
+  createTableRowsModel,
+  createTableHeadersModel,
+  createTableEventsHeadersModel,
+  createTableEventsRowsModel,
+} from './helpers/createTableModel';
 
 export default {
   name: 'AbonementsTable',
@@ -29,104 +40,67 @@ export default {
   },
   data() {
     return {
-      headRowsSecondary: [
+      year: null,
+      month: null,
+      headRowsEvents: [
         {
-          columns: [
-            { text: '1' },
-            { text: '2' },
-            { text: '3' },
-            { text: '4' },
-            { text: '5' },
-            { text: '6' },
-            { text: '7' },
-            { text: '8' },
-            { text: '9' },
-            { text: '10' },
-            { text: '11' },
-            { text: '12' },
-            { text: '13' },
-            { text: '14' },
-            { text: '15' },
-            { text: '16' },
-            { text: '17' },
-            { text: '18' },
-            { text: '19' },
-            { text: '20' },
-            { text: '21' },
-            { text: '22' },
-            { text: '23' },
-            { text: '24' },
-            { text: '25' },
-            { text: '26' },
-            { text: '27' },
-            { text: '28' },
-            { text: '29' },
-            { text: '30' },
-            { text: '31' },
-          ],
+          columns: [],
         },
       ],
-      bodyRowsSecondary: [
+      bodyRowsEvents: [
         {
-          columns: [
-            { text: '1' },
-            { text: '1' },
-            { text: '1' },
-            { text: '1' },
-            { text: '1' },
-            { text: '1' },
-            { text: '1' },
-            { text: '1' },
-            { text: '1' },
-            { text: '1' },
-            { text: '1' },
-            { text: '1' },
-            { text: '1' },
-            { text: '1' },
-            { text: '1' },
-            { text: '1' },
-            { text: '1' },
-            { text: '1' },
-            { text: '1' },
-            { text: '1' },
-            { text: '1' },
-            { text: '1' },
-            { text: '1' },
-            { text: '1' },
-            { text: '1' },
-            { text: '1' },
-            { text: '1' },
-            { text: '1' },
-            { text: '1' },
-            { text: '1' },
-            { text: '1' },
-          ],
+          columns: [],
         },
       ],
-      headRows: [
-        {
-          columns: [
-            { text: 'Дата активации' },
-            { text: 'Ф.И. Ребенка' },
-            { text: 'Всего занятий' },
-            { text: 'Осталось занятий' },
-            { text: '№ абонемента' },
-          ],
-        },
-      ],
-      bodyRows: [
-        {
-          columns: [{ text: '01.01.2021' }, { text: 'Иванов Андрей' }, { text: '8' }, { text: '4' }, { text: '710' }],
-        },
-      ],
+      headRows: [],
+      bodyRows: [],
     };
   },
   async fetch() {},
   computed: {},
   methods: {
+    testCliack() {
+      this.bodyRows[0].columns[3].text++;
+    },
     emitNewClient() {
       this.$emit('newClient');
     },
+    async getAbonementsFull() {
+      try {
+        const answer = await this.$api.abonement.getAbonementsFull({
+          params: {
+            filters: {
+              year: this.year,
+              month: this.month,
+            },
+            sortings: [
+              { name: 'number', type: 'ASC' },
+              // { name: 'surname', type: 'ASC' },
+            ],
+          },
+        });
+
+        const abonementFull = new AbonementFullModel(answer);
+        // this.$nuxt.$router.replace({ path: '/' });
+        return abonementFull.getModel();
+      } catch (error) {
+        this.$showError(error);
+      }
+    },
+  },
+  async mounted() {
+    this.year = DateTime.local().year;
+    this.month = DateTime.local().month;
+
+    const rows = await this.getAbonementsFull();
+
+    createTableRowsModel.call(this, { rows, columnsHeadersEnums });
+
+    createTableHeadersModel.call(this, { rows, columnsHeadersEnums });
+
+    createTableEventsHeadersModel.call(this, { rows, columnsHeadersEnums, year: this.year, month: this.month });
+
+    createTableEventsRowsModel.call(this, { rows, columnsHeadersEnums, year: this.year, month: this.month });
   },
 };
 </script>
