@@ -2,11 +2,11 @@
   <div class="abonements-table">
     <div class="abonements-table__wrapper">
       <div class="abonements-table__main-table">
-        <v-table :headRows="headRows" headRowsI18n="tables.abonementTableFull.columns" :bodyRows="bodyRows" />
+        <v-table :rowsHead="rowsHead" rowsHeadI18n="tables.abonementTableFull.columns" :rowsBody="rowsBody" />
       </div>
 
       <div class="abonements-table__secondary-table">
-        <v-table :headRows="headRowsEvents" :bodyRows="bodyRowsEvents" />
+        <v-table :rowsHead="rowsHeadEvents" :rowsBody="rowsBodyEvents" />
       </div>
     </div>
 
@@ -22,14 +22,8 @@
 import { DateTime } from 'luxon';
 import Table from '@/components/ui/Tables/TableMain';
 import Button from '@/components/ui/Buttons/ButtonMain';
-import AbonementFullModel from '@/utils/api/models/abonementFullModel';
+import { AbonementsFullModel } from '@/utils/api/models/abonementsFullModel';
 import { columnsHeadersEnums } from '@/constants/enums/abonementsTableFull';
-import {
-  createTableRowsModel,
-  createTableHeadersModel,
-  createTableEventsHeadersModel,
-  createTableEventsRowsModel,
-} from './helpers/createTableModel';
 
 export default {
   name: 'AbonementsTable',
@@ -42,32 +36,34 @@ export default {
     return {
       year: null,
       month: null,
-      headRowsEvents: [
-        {
-          columns: [],
-        },
-      ],
-      bodyRowsEvents: [
-        {
-          columns: [],
-        },
-      ],
-      headRows: [],
-      bodyRows: [],
+      rowsHead: [],
+      rowsBody: [],
+      rowsHeadEvents: [],
+      rowsBodyEvents: [],
     };
   },
   async fetch() {},
   computed: {},
   methods: {
     testCliack() {
-      this.bodyRows[0].columns[3].text++;
+      this.rowsBody[0].columns[3].text++;
+    },
+    setCurrentDate() {
+      this.year = DateTime.local().year;
+      this.month = DateTime.local().month;
+    },
+    setTableRows(options) {
+      this.rowsHead = options.rowsHead;
+      this.rowsBody = options.rowsBody;
+      this.rowsHeadEvents = options.rowsHeadEvents;
+      this.rowsBodyEvents = options.rowsBodyEvents;
     },
     emitNewClient() {
       this.$emit('newClient');
     },
     async getAbonementsFull() {
       try {
-        const answer = await this.$api.abonement.getAbonementsFull({
+        const response = await this.$api.abonement.getAbonementsFull({
           params: {
             filters: {
               year: this.year,
@@ -80,27 +76,28 @@ export default {
           },
         });
 
-        const abonementFull = new AbonementFullModel(answer);
+        const options = {
+          response,
+          columnsOrder: columnsHeadersEnums,
+          month: this.month,
+          year: this.year,
+        };
+
         // this.$nuxt.$router.replace({ path: '/' });
-        return abonementFull.getModel();
+
+        const abonementsFullModel = new AbonementsFullModel(options).getModel();
+
+        return abonementsFullModel;
       } catch (error) {
         this.$showError(error);
       }
     },
   },
   async mounted() {
-    this.year = DateTime.local().year;
-    this.month = DateTime.local().month;
+    this.setCurrentDate();
 
-    const rows = await this.getAbonementsFull();
-
-    createTableRowsModel.call(this, { rows, columnsHeadersEnums });
-
-    createTableHeadersModel.call(this, { rows, columnsHeadersEnums });
-
-    createTableEventsHeadersModel.call(this, { rows, columnsHeadersEnums, year: this.year, month: this.month });
-
-    createTableEventsRowsModel.call(this, { rows, columnsHeadersEnums, year: this.year, month: this.month });
+    const abonementsTableRows = await this.getAbonementsFull();
+    this.setTableRows(abonementsTableRows);
   },
 };
 </script>

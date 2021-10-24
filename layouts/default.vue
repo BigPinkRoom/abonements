@@ -34,12 +34,6 @@ export default {
     return {
       routes: [
         {
-          name: 'Test API',
-          forRoles: [rolesConstants.EMPLOYEE_ROLE_NAME],
-          action: this.testApi,
-          disabledRouteEvent: true,
-        },
-        {
           name: routesConstants.MAIN_PAGE_ROUTE_NAME,
           forRoles: [rolesConstants.EMPLOYEE_ROLE_NAME, rolesConstants.GUEST_ROLE_NAME],
         },
@@ -71,23 +65,6 @@ export default {
     async logout() {
       try {
         const answer = await this.$api.user.logout();
-        // this.$nuxt.$router.replace({ path: '/' });
-        this.$showMessage(answer);
-      } catch (error) {
-        this.$showError(error);
-      }
-    },
-
-    async testApi() {
-      try {
-        const answer = await this.$api.client.getClients({
-          params: {
-            sortings: [
-              { name: 'name', type: 'ASC' },
-              // { name: 'surname', type: 'ASC' },
-            ],
-          },
-        });
         // this.$nuxt.$router.replace({ path: '/' });
         this.$showMessage(answer);
       } catch (error) {

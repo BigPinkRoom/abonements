@@ -1,14 +1,14 @@
 <template>
   <table class="common-table" :class="styleType">
     <thead>
-      <tr v-for="row in headRows" :key="row.id" :class="row.class">
+      <tr v-for="row in rowsHead" :key="row.id" :class="row.class">
         <th v-for="column in row.columns" :key="column.id">
           {{ checkI18n(column) }}
         </th>
       </tr>
     </thead>
     <tbody>
-      <tr v-for="row in bodyRows" :key="row.id" :class="row.class">
+      <tr v-for="row in rowsBody" :key="row.id" :class="row.class">
         <td v-for="column in row.columns" :key="column.id" :class="column.class">
           {{ column.text }}
         </td>
@@ -24,20 +24,20 @@ export default {
     styleType: {
       type: String,
     },
-    headRows: {
+    rowsHead: {
       type: Array,
     },
-    headRowsI18n: {
+    rowsHeadI18n: {
       type: String,
     },
-    bodyRows: {
+    rowsBody: {
       type: Array,
     },
   },
   methods: {
     checkI18n(column) {
-      if (this.headRowsI18n) {
-        return column.code ? this.$t(`${this.headRowsI18n}.${column.code}.title`) : '';
+      if (this.rowsHeadI18n) {
+        return column.code ? this.$t(`${this.rowsHeadI18n}.${column.code}.title`) : '';
       } else {
         return column.text;
       }
@@ -60,6 +60,10 @@ export default {
 
   & td {
     border: 1px solid green;
+  }
+
+  & tr {
+    height: 22px;
   }
 }
 

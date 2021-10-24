@@ -12,7 +12,6 @@ export default class User extends ApiModule {
     return await this.request('/auth/signup', 'post', params);
   }
 
-
   // TODO remove (here need to only api)?
   async logout() {
     // return await this.request('/auth/logout', 'get');
