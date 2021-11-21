@@ -22,8 +22,7 @@
 import { DateTime } from 'luxon';
 import Table from '@/components/ui/Tables/TableMain';
 import Button from '@/components/ui/Buttons/ButtonMain';
-import { AbonementsFullModel } from '@/utils/api/models/abonementsFullModel';
-import { columnsHeadersEnums } from '@/constants/enums/abonementsTableFull';
+import { abonementsFullService } from '@/utils/services/abonementsFull';
 
 export default {
   name: 'AbonementsTable',
@@ -63,29 +62,12 @@ export default {
     },
     async getAbonementsFull() {
       try {
-        const response = await this.$api.abonement.getAbonementsFull({
-          params: {
-            filters: {
-              year: this.year,
-              month: this.month,
-            },
-            sortings: [
-              { name: 'number', type: 'ASC' },
-              // { name: 'surname', type: 'ASC' },
-            ],
-          },
-        });
-
         const options = {
-          response,
-          columnsOrder: columnsHeadersEnums,
           month: this.month,
           year: this.year,
         };
 
-        // this.$nuxt.$router.replace({ path: '/' });
-
-        const abonementsFullModel = new AbonementsFullModel(options).getModel();
+        const abonementsFullModel = await abonementsFullService.get(options);
 
         return abonementsFullModel;
       } catch (error) {
