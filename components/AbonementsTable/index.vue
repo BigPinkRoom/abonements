@@ -22,7 +22,6 @@
 import { DateTime } from 'luxon';
 import Table from '@/components/ui/Tables/TableMain';
 import Button from '@/components/ui/Buttons/ButtonMain';
-import { abonementsFullService } from '@/utils/services/abonementsFull';
 
 export default {
   name: 'AbonementsTable',
@@ -61,18 +60,14 @@ export default {
       this.$emit('newClient');
     },
     async getAbonementsFull() {
-      try {
-        const options = {
-          month: this.month,
-          year: this.year,
-        };
+      const options = {
+        month: this.month,
+        year: this.year,
+      };
 
-        const abonementsFullModel = await abonementsFullService.get(options);
+      const abonementsFullModel = await this.$services.abonementsFull.get(options);
 
-        return abonementsFullModel;
-      } catch (error) {
-        this.$showError(error);
-      }
+      return abonementsFullModel;
     },
   },
   async mounted() {

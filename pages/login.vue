@@ -39,18 +39,10 @@ export default {
     async formSubmitHandler(eventForm) {
       const user = this.createModelLogin(eventForm.target.elements);
 
-      try {
-        // await this.$auth.loginWith('cookie', {
-        //   data: user,
-        // });
+      await this.$services.auth.login(user);
 
-        const answer = await this.$api.user.login(user);
-
-        console.log('answer', answer);
-        this.$showMessage(this.$auth.loggedIn);
-      } catch (error) {
-        // this.$showError(error.response.data.error.message);
-        this.$showError(error);
+      if (this.$auth.loggedIn) {
+        this.$nuxt.$router.replace({ path: '/' });
       }
     },
 

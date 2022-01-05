@@ -8,7 +8,6 @@
 
 <script>
 import FormMain from '@/components/ui/Forms/FormMain';
-// import api from '~/utils/api';
 
 export default {
   name: 'Signup',
@@ -67,14 +66,10 @@ export default {
     async showFormSubmit(eventForm) {
       const newUser = this.createModelSignup(eventForm.target.elements);
 
-      try {
-        const answer = await this.$api.user.signup(newUser);
+      const answer = await this.$services.auth.signup(newUser);
 
-        console.log('sing up answer', answer);
-
-        this.$showMessage(answer);
-      } catch (error) {
-        this.$showError(error);
+      if (answer) {
+        this.$nuxt.$router.replace({ path: '/login' });
       }
     },
 

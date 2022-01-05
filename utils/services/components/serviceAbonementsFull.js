@@ -1,11 +1,13 @@
+import { ServicesCommon } from '@/utils/services/common/servicesCommon';
 import { AbonementsFullModel } from '@/utils/api/models/abonementsFullModel';
 import { isEmptyObject } from '@/helpers/checkTypes';
 import { columnsHeadersEnums } from '@/constants/enums/abonementsTableFull';
-import { Services } from './common/services';
 
-class AbonementsFullService extends Services {
-  constructor() {
+export class ServiceAbonementsFull extends ServicesCommon {
+  constructor(app) {
     super();
+
+    this.context = app;
   }
 
   async get({ month = null, year = null, sortings = [], filters = {}, columnsOrder = [] }) {
@@ -23,9 +25,9 @@ class AbonementsFullService extends Services {
         };
       }
 
-      console.log('this', this.$api); // TODO
+      console.log('this', this.context); // TODO
 
-      const response = await this.$api.abonement.getAbonementsFull({
+      const response = await this.context.$api.abonement.getAbonementsFull({
         params,
       });
 
@@ -52,9 +54,7 @@ class AbonementsFullService extends Services {
 
       return abonementsFullModel;
     } catch (error) {
-      this.$showError(error);
+      this.context.$showError(error);
     }
   }
 }
-
-export const abonementsFullService = new AbonementsFullService();

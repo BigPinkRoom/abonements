@@ -5,7 +5,7 @@ export class RowsHeadEvents {
     this._month = month;
     this._year = year;
 
-    this._rowsHead = this._createHeadsEventsModel(this._month, this._year);
+    this._rowsHeadEvents = this._createHeadsEventsModel(this._month, this._year);
   }
 
   _createHeadsEventsModel(month, year) {
@@ -25,6 +25,6 @@ export class RowsHeadEvents {
   }
 
   getModel() {
-    return this._rowsHead;
+    return this._rowsHeadEvents;
   }
 }

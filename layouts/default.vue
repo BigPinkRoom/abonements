@@ -63,13 +63,8 @@ export default {
   },
   methods: {
     async logout() {
-      try {
-        const answer = await this.$api.user.logout();
-        // this.$nuxt.$router.replace({ path: '/' });
-        this.$showMessage(answer);
-      } catch (error) {
-        this.$showError(error);
-      }
+      await this.$services.auth.logout();
+      this.$nuxt.$router.replace({ path: '/login' });
     },
 
     // TODO
