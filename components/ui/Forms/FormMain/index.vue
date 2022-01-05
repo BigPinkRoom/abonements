@@ -7,11 +7,27 @@
         </legend>
 
         <ul class="form-content__group">
-          <li v-for="field in fields" :key="field.id" class="form-content__item">
+          <li v-for="select in selects" :key="`${select.idName}_${uuid}`">
+            <label :for="select.name" class="form-content__label">
+              {{ $t(select.title) }}
+            </label>
+            <v-select
+              :id="`${select.idName}_${uuid}`"
+              :name="select.name"
+              :optionsList="select.optionsList"
+              :placeholder="select.placeholder"
+            />
+          </li>
+          <li v-for="field in fields" :key="`${field.idName}_${uuid}`" class="form-content__item">
             <label :for="field.name" class="form-content__label">
               {{ $t(field.title) }}
             </label>
-            <v-input :id="field.id" :name="field.name" :placeholder="$t(field.placeholder)" :type="field.type" />
+            <v-input
+              :id="`${field.idName}_${uuid}`"
+              :name="field.name"
+              :placeholder="$t(field.placeholder)"
+              :type="field.type"
+            />
           </li>
           <v-input type="submit" :value="$t(submitText)" />
         </ul>
@@ -20,14 +36,21 @@
   </div>
 </template>
 <script>
+import { uuid } from 'vue-uuid';
+import vSelect from '@/components/ui/Selects/Select';
 import vInput from '../../Fields/Input';
 
 export default {
   name: 'Form',
   components: {
     vInput,
+    vSelect,
   },
   props: {
+    selects: {
+      type: Array,
+      default: () => [],
+    },
     fields: {
       type: Array,
       default: () => [],
@@ -38,12 +61,17 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      uuid: '',
+    };
   },
   methods: {
     emitSubmit(event) {
       this.$emit('formSubmit', event);
     },
+  },
+  mounted() {
+    this.uuid = uuid.v4();
   },
 };
 </script>
