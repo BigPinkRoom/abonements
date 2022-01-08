@@ -1,11 +1,6 @@
 <template>
   <div class="container">
-    <form-main
-      :fields="loginFields"
-      :selects="loginSelects"
-      submit-text="forms.login.submit"
-      @formSubmit="formSubmitHandler"
-    >
+    <form-main :fields="loginFields" submit-text="forms.login.submit" @formSubmit="formSubmitHandler">
       <template #title>{{ $t('forms.login.title') }}</template>
     </form-main>
   </div>
@@ -21,24 +16,15 @@ export default {
   },
   data() {
     return {
-      loginSelects: [
+      loginFields: [
         {
           idName: 'branch-select',
           name: 'branch',
+          type: 'select',
           title: 'forms.login.fields.branch.title',
           placeholder: 'forms.login.fields.branch.placeholder',
-          optionsList: [
-            {
-              idName: 'branch-options',
-              value: 'test text option 1',
-              text: 'test text option 1',
-              disabled: false,
-              selected: false,
-            },
-          ],
+          optionsList: [],
         },
-      ],
-      loginFields: [
         {
           idName: 'login-value',
           name: 'email',

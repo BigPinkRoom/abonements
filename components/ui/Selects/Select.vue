@@ -6,7 +6,7 @@
       </option>
       <option
         v-for="option in optionsList"
-        :key="option.id"
+        :key="`${option.id}_${uuid}`"
         :disabled="option.disabled"
         :selected="option.selected"
         :value="option.value"
@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import { uuid } from 'vue-uuid';
+
 export default {
   name: 'Select',
   props: {
@@ -35,6 +37,14 @@ export default {
     optionsList: {
       type: Array,
     },
+  },
+  data() {
+    return {
+      uuid: '',
+    };
+  },
+  mounted() {
+    this.uuid = uuid.v4();
   },
   methods: {
     updateValue(value) {},

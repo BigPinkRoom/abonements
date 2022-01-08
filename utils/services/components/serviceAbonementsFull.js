@@ -10,7 +10,7 @@ export class ServiceAbonementsFull extends ServicesCommon {
     this.context = app;
   }
 
-  async get({ month = null, year = null, sortings = [], filters = {}, columnsOrder = [] }) {
+  async get({ sortings = [], filters = {}, columnsOrder = [] } = {}) {
     try {
       const params = {};
 
@@ -33,22 +33,10 @@ export class ServiceAbonementsFull extends ServicesCommon {
 
       const options = {
         response,
-        columnsOrder,
-        month,
-        year,
+        columnsOrder: columnsOrder.length ? columnsOrder : columnsHeadersEnums,
+        eventsYear: params.filters.year,
+        eventsMonth: params.filters.month,
       };
-
-      if (!options.columnsOrder.length) {
-        options.columnsOrder = columnsHeadersEnums;
-      }
-
-      if (!options.year) {
-        options.year = this._getCurrentYear();
-      }
-
-      if (!options.month) {
-        options.month = this._getCurrentMonth();
-      }
 
       const abonementsFullModel = new AbonementsFullModel(options).getModel();
 

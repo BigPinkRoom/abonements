@@ -18,42 +18,50 @@ export default {
     return {
       signupFields: [
         {
-          id: 1,
+          idName: 'branch-select',
+          name: 'branch',
+          type: 'select',
+          title: 'forms.login.fields.branch.title',
+          placeholder: 'forms.login.fields.branch.placeholder',
+          optionsList: [],
+        },
+        {
+          idName: 'signup-email',
           name: 'email',
           type: 'email',
           title: 'forms.signup.fields.email.title',
           placeholder: 'forms.signup.fields.email.placeholder',
         },
         {
-          id: 2,
+          idName: 'signup-password',
           name: 'password',
           type: 'password',
           title: 'forms.signup.fields.password.title',
           placeholder: 'forms.signup.fields.password.placeholder',
         },
         {
-          id: 3,
+          idName: 'signup-password-confirm',
           name: 'passwordConfirm',
           type: 'password',
           title: 'forms.signup.fields.passwordConfirm.title',
           placeholder: 'forms.signup.fields.passwordConfirm.placeholder',
         },
         {
-          id: 4,
+          idName: 'signup-surname',
           name: 'surname',
           type: 'text',
           title: 'forms.signup.fields.surname.title',
           placeholder: 'forms.signup.fields.surname.placeholder',
         },
         {
-          id: 5,
+          idName: 'signup-name',
           name: 'name',
           type: 'text',
           title: 'forms.signup.fields.name.title',
           placeholder: 'forms.signup.fields.name.placeholder',
         },
         {
-          id: 6,
+          idName: 'signup-patronymic',
           name: 'patronymic',
           type: 'text',
           title: 'forms.signup.fields.patronymic.title',
@@ -61,6 +69,12 @@ export default {
         },
       ],
     };
+  },
+  async created() {
+    const branchFieldIndex = this.signupFields.findIndex((field) => field.idName === 'branch-select');
+    const branchSelectOptions = await this.$services.branches.getSelect();
+
+    this.signupFields[branchFieldIndex].optionsList = branchSelectOptions;
   },
   methods: {
     async showFormSubmit(eventForm) {

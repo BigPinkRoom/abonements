@@ -7,22 +7,19 @@
         </legend>
 
         <ul class="form-content__group">
-          <li v-for="select in selects" :key="`${select.idName}_${uuid}`">
-            <label :for="select.name" class="form-content__label">
-              {{ $t(select.title) }}
-            </label>
-            <v-select
-              :id="`${select.idName}_${uuid}`"
-              :name="select.name"
-              :optionsList="select.optionsList"
-              :placeholder="select.placeholder"
-            />
-          </li>
           <li v-for="field in fields" :key="`${field.idName}_${uuid}`" class="form-content__item">
             <label :for="field.name" class="form-content__label">
               {{ $t(field.title) }}
             </label>
+            <v-select
+              v-if="field.type === 'select'"
+              :id="`${field.idName}_${uuid}`"
+              :name="field.name"
+              :options-list="field.optionsList"
+              :placeholder="field.placeholder"
+            />
             <v-input
+              v-else
               :id="`${field.idName}_${uuid}`"
               :name="field.name"
               :placeholder="$t(field.placeholder)"
@@ -47,10 +44,6 @@ export default {
     vSelect,
   },
   props: {
-    selects: {
-      type: Array,
-      default: () => [],
-    },
     fields: {
       type: Array,
       default: () => [],
@@ -65,13 +58,13 @@ export default {
       uuid: '',
     };
   },
+  mounted() {
+    this.uuid = uuid.v4();
+  },
   methods: {
     emitSubmit(event) {
       this.$emit('formSubmit', event);
     },
-  },
-  mounted() {
-    this.uuid = uuid.v4();
   },
 };
 </script>
