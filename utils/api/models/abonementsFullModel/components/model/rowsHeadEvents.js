@@ -1,9 +1,9 @@
 import { getDaysOfMonth } from '@/helpers/luxon';
 
 export class RowsHeadEvents {
-  constructor(month, year) {
-    this._month = month;
-    this._year = year;
+  constructor(eventsMonth, eventsYear) {
+    this._year = eventsYear;
+    this._month = eventsMonth;
 
     this._rowsHeadEvents = this._createHeadsEventsModel(this._month, this._year);
   }

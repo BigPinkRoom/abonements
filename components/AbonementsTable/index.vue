@@ -60,12 +60,7 @@ export default {
       this.$emit('newClient');
     },
     async getAbonementsFull() {
-      const options = {
-        month: this.month,
-        year: this.year,
-      };
-
-      const abonementsFullModel = await this.$services.abonementsFull.get(options);
+      const abonementsFullModel = await this.$services.abonementsFull.get();
 
       return abonementsFullModel;
     },

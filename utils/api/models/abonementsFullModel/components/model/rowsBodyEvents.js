@@ -2,15 +2,15 @@ import { getDaysOfMonth } from '@/helpers/luxon';
 import { DateTime } from 'luxon';
 
 export class RowsBodyEvents {
-  constructor(rawRows, month, year) {
+  constructor(rawRows, eventsMonth, eventsYear) {
     this._rawRows = rawRows;
-    this._month = month;
-    this._year = year;
+    this._month = eventsMonth;
+    this._year = eventsYear;
 
     this._rowsBodyEvents = this._createBodyEventsModel({
       rawRows: this._rawRows,
-      month,
-      year,
+      month: this._month,
+      year: this._year,
     });
   }
 

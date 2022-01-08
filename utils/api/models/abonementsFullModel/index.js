@@ -4,19 +4,17 @@ import { RowsHead as RowsHeadModel } from './components/model/rowsHead';
 import { RowsBody as RowsBodyModel } from './components/model/rowsBody';
 import { RowsBodyEvents as RowsBodyEventsModel } from './components/model/rowsBodyEvents';
 import { RowsHeadEvents as RowsHeadEventsModel } from './components/model/rowsHeadEvents';
-// import  from './components/model/rowsHeadEvents';
 
 export class AbonementsFullModel extends Model {
-  constructor({ response, columnsOrder, month, year }) {
+  constructor({ response, columnsOrder, eventsMonth, eventsYear }) {
     super();
 
     this._decodedResponse = new DecodedResponse(response).getDecodedResponse();
 
     this._rowsHead = new RowsHeadModel(this._decodedResponse, columnsOrder).getModel();
     this._rowsBody = new RowsBodyModel(this._decodedResponse, columnsOrder).getModel();
-    this._rowsHeadEvents = new RowsHeadEventsModel(month, year).getModel();
-    this._rowsBodyEvents = new RowsBodyEventsModel(this._decodedResponse, month, year).getModel();
-    console.log('rows head', this._rowsBodyEvents);
+    this._rowsHeadEvents = new RowsHeadEventsModel(eventsMonth, eventsYear).getModel();
+    this._rowsBodyEvents = new RowsBodyEventsModel(this._decodedResponse, eventsMonth, eventsYear).getModel();
   }
 
   getModel() {
