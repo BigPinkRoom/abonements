@@ -38,6 +38,10 @@
     "signup": {
       "title": "Signup",
       "fields": {
+        "branch": {
+          "title": "Branch",
+          "placeholder": "Select branch"
+        },
         "email": {
           "title": "Email",
           "placeholder": "Enter your email"
