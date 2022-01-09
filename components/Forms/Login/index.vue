@@ -2,7 +2,7 @@
   <form class="form" @submit.prevent="emitSubmit">
     <h1 class="form__title">{{ $t('forms.login.title') }}</h1>
 
-    <p class="form__item">
+    <div class="form__item">
       <label :for="`login-branch-select_${uuid}`" class="form__label">
         {{ $t('forms.login.fields.branch.title') }}
       </label>
@@ -12,9 +12,9 @@
         :placeholder="$t('forms.login.fields.branch.placeholder')"
         name="branch"
       />
-    </p>
+    </div>
 
-    <p class="form__item">
+    <div class="form__item">
       <label :for="`login-email_${uuid}`" class="form__label">
         {{ $t('forms.login.fields.email.title') }}
       </label>
@@ -24,9 +24,9 @@
         name="email"
         type="email"
       />
-    </p>
+    </div>
 
-    <p class="form__item">
+    <div class="form__item">
       <label :for="`login-password_${uuid}`" class="form__label">
         {{ $t('forms.login.fields.password.title') }}
       </label>
@@ -36,7 +36,7 @@
         name="password"
         type="password"
       />
-    </p>
+    </div>
 
     <v-input type="submit" :value="$t('forms.login.submit')" />
   </form>

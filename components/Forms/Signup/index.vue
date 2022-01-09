@@ -2,7 +2,7 @@
   <form class="form" @submit.prevent="emitSubmit">
     <h1 class="form__title">{{ $t('forms.signup.title') }}</h1>
 
-    <p class="form__item">
+    <div class="form__item">
       <label :for="`signup-branch-select_${uuid}`" class="form__label">
         {{ $t('forms.signup.fields.branch.title') }}
       </label>
@@ -12,9 +12,9 @@
         :placeholder="$t('forms.signup.fields.branch.placeholder')"
         name="branch"
       />
-    </p>
+    </div>
 
-    <p class="form__item">
+    <div class="form__item">
       <label :for="`signup-email_${uuid}`" class="form__label">
         {{ $t('forms.signup.fields.email.title') }}
       </label>
@@ -24,9 +24,9 @@
         name="email"
         type="email"
       />
-    </p>
+    </div>
 
-    <p class="form__item">
+    <div class="form__item">
       <label :for="`signup-password_${uuid}`" class="form__label">
         {{ $t('forms.signup.fields.password.title') }}
       </label>
@@ -36,9 +36,9 @@
         name="password"
         type="password"
       />
-    </p>
+    </div>
 
-    <p class="form__item">
+    <div class="form__item">
       <label :for="`signup-password-confirm_${uuid}`" class="form__label">
         {{ $t('forms.signup.fields.passwordConfirm.title') }}
       </label>
@@ -48,9 +48,9 @@
         name="password-confirm"
         type="password"
       />
-    </p>
+    </div>
 
-    <p class="form__item">
+    <div class="form__item">
       <label :for="`signup-surname_${uuid}`" class="form__label">
         {{ $t('forms.signup.fields.surname.title') }}
       </label>
@@ -60,9 +60,9 @@
         name="surname"
         type="text"
       />
-    </p>
+    </div>
 
-    <p class="form__item">
+    <div class="form__item">
       <label :for="`signup-name_${uuid}`" class="form__label">
         {{ $t('forms.signup.fields.name.title') }}
       </label>
@@ -72,8 +72,8 @@
         name="name"
         type="text"
       />
-    </p>
-    <p class="form__item">
+    </div>
+    <div class="form__item">
       <label :for="`signup-patronymic_${uuid}`" class="form__label">
         {{ $t('forms.signup.fields.patronymic.title') }}
       </label>
@@ -83,7 +83,7 @@
         name="patronymic"
         type="text"
       />
-    </p>
+    </div>
 
     <v-input type="submit" :value="$t('forms.signup.submit')" />
   </form>
