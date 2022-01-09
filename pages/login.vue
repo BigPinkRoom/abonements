@@ -1,48 +1,21 @@
 <template>
   <div class="container">
-    <form-main :fields="loginFields" submit-text="forms.login.submit" @formSubmit="formSubmitHandler">
-      <template #title>{{ $t('forms.login.title') }}</template>
-    </form-main>
+    <v-login-form :branch-options-list="branchesSelectList" @formSubmit="formSubmitHandler" />
   </div>
 </template>
 
 <script>
-import FormMain from '@/components/ui/Forms/FormMain';
+import { mapGetters } from 'vuex';
+import Login from '@/components/Forms/Login';
 
 export default {
   name: 'Login',
   components: {
-    FormMain,
+    vLoginForm: Login,
   },
-  data() {
-    return {
-      loginFields: [
-        {
-          idName: 'branch-select',
-          name: 'branch',
-          type: 'select',
-          title: 'forms.login.fields.branch.title',
-          placeholder: 'forms.login.fields.branch.placeholder',
-          optionsList: [],
-        },
-        {
-          idName: 'login-value',
-          name: 'email',
-          type: 'email',
-          title: 'forms.login.fields.email.title',
-          placeholder: 'forms.login.fields.email.placeholder',
-        },
-        {
-          idName: 'login-password',
-          name: 'password',
-          type: 'password',
-          title: 'forms.login.fields.password.title',
-          placeholder: 'forms.login.fields.password.placeholder',
-        },
-      ],
-    };
+  computed: {
+    ...mapGetters('branches', ['branchesSelectList']),
   },
-  async fetch() {},
   methods: {
     async formSubmitHandler(eventForm) {
       const user = this.createModelLogin(eventForm.target.elements);

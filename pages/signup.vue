@@ -1,83 +1,23 @@
 <template>
   <div class="container">
-    <form-main :fields="signupFields" submit-text="forms.signup.submit" @formSubmit="showFormSubmit">
-      <template #title>{{ $t('forms.signup.title') }}</template>
-    </form-main>
+    <v-signup-form :branch-options-list="branchesSelectList" @formSubmit="formSubmitHandler" />
   </div>
 </template>
 
 <script>
-import FormMain from '@/components/ui/Forms/FormMain';
+import { mapGetters } from 'vuex';
+import Signup from '@/components/Forms/Signup';
 
 export default {
   name: 'Signup',
   components: {
-    FormMain,
+    vSignupForm: Signup,
   },
-  data() {
-    return {
-      signupFields: [
-        {
-          idName: 'branch-select',
-          name: 'branch',
-          type: 'select',
-          title: 'forms.login.fields.branch.title',
-          placeholder: 'forms.login.fields.branch.placeholder',
-          optionsList: [],
-        },
-        {
-          idName: 'signup-email',
-          name: 'email',
-          type: 'email',
-          title: 'forms.signup.fields.email.title',
-          placeholder: 'forms.signup.fields.email.placeholder',
-        },
-        {
-          idName: 'signup-password',
-          name: 'password',
-          type: 'password',
-          title: 'forms.signup.fields.password.title',
-          placeholder: 'forms.signup.fields.password.placeholder',
-        },
-        {
-          idName: 'signup-password-confirm',
-          name: 'passwordConfirm',
-          type: 'password',
-          title: 'forms.signup.fields.passwordConfirm.title',
-          placeholder: 'forms.signup.fields.passwordConfirm.placeholder',
-        },
-        {
-          idName: 'signup-surname',
-          name: 'surname',
-          type: 'text',
-          title: 'forms.signup.fields.surname.title',
-          placeholder: 'forms.signup.fields.surname.placeholder',
-        },
-        {
-          idName: 'signup-name',
-          name: 'name',
-          type: 'text',
-          title: 'forms.signup.fields.name.title',
-          placeholder: 'forms.signup.fields.name.placeholder',
-        },
-        {
-          idName: 'signup-patronymic',
-          name: 'patronymic',
-          type: 'text',
-          title: 'forms.signup.fields.patronymic.title',
-          placeholder: 'forms.signup.fields.patronymic.placeholder',
-        },
-      ],
-    };
-  },
-  async created() {
-    const branchFieldIndex = this.signupFields.findIndex((field) => field.idName === 'branch-select');
-    const branchSelectOptions = await this.$services.branches.getSelect();
-
-    this.signupFields[branchFieldIndex].optionsList = branchSelectOptions;
+  computed: {
+    ...mapGetters('branches', ['branchesSelectList']),
   },
   methods: {
-    async showFormSubmit(eventForm) {
+    async formSubmitHandler(eventForm) {
       const newUser = this.createModelSignup(eventForm.target.elements);
 
       const answer = await this.$services.auth.signup(newUser);
