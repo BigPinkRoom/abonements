@@ -38,6 +38,10 @@
     "signup": {
       "title": "Регистрация",
       "fields": {
+        "branch": {
+          "title": "Филиал",
+          "placeholder": "Выберите филиал"
+        },
         "email": {
           "title": "Email",
           "placeholder": "Введите ваш email"
