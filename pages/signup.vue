@@ -10,6 +10,7 @@ import Signup from '@/components/Forms/Signup';
 
 export default {
   name: 'Signup',
+  middleware: 'auth-guest-access',
   components: {
     vSignupForm: Signup,
   },

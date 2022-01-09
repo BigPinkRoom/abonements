@@ -1,6 +1,5 @@
 export class Branch {
   constructor(rawBranches) {
-    console.log('raw branches', rawBranches);
     this._rawBranches = rawBranches;
     this._branches = this._createBranchesModel(this._rawBranches);
   }

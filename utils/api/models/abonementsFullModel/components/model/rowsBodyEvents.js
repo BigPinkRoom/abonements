@@ -41,8 +41,6 @@ export class RowsBodyEvents {
       };
     });
 
-    console.log('rows body events', rows);
-
     return rows;
   }
 

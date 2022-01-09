@@ -14,7 +14,6 @@ export default class User extends ApiModule {
 
   // TODO remove (here need to only api)?
   async logout() {
-    // return await this.request('/auth/logout', 'get');
     await this.context.$auth.logout();
 
     const answer = 'Succussefully logged out';
@@ -24,14 +23,11 @@ export default class User extends ApiModule {
 
   // TODO remove (here need to only api)?
   async login(user) {
-    console.log('user login', user);
-
     await this.context.$auth.loginWith('cookie', {
       data: user,
     });
-    const answer = 'User is logged';
 
-    // answer = new ApiResponse(answer);
+    const answer = 'User is logged';
 
     return answer;
   }

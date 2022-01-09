@@ -10,6 +10,7 @@ import Login from '@/components/Forms/Login';
 
 export default {
   name: 'Login',
+  middleware: 'auth-guest-access',
   components: {
     vLoginForm: Login,
   },

@@ -25,8 +25,6 @@ export class ServiceAbonementsFull extends ServicesCommon {
         };
       }
 
-      console.log('this', this.context); // TODO
-
       const response = await this.context.$api.abonement.getAbonementsFull({
         params,
       });

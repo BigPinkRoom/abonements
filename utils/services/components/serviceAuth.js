@@ -21,7 +21,18 @@ export class ServiceAuth {
 
       return answer;
     } catch (error) {
-      this.context.$showError(error);
+      const errorMessage = error.response.data.error.message;
+      const errorStatus = error.response.status;
+
+      const messageCheck = [errorMessage !== 'undefined', errorMessage !== null, errorMessage !== ''].every(
+        (contain) => contain === true
+      );
+
+      if (messageCheck) {
+        this.context.$showError(`status: ${errorStatus}, ${errorMessage}.`);
+      } else {
+        this.context.$showError(`Unknown error (${errorStatus}).`);
+      }
     }
   }
 
@@ -32,7 +43,18 @@ export class ServiceAuth {
 
       return answer;
     } catch (error) {
-      this.context.$showError(error);
+      const errorMessage = error.response.data.error.message;
+      const errorStatus = error.response.status;
+
+      const messageCheck = [errorMessage !== 'undefined', errorMessage !== null, errorMessage !== ''].every(
+        (contain) => contain === true
+      );
+
+      if (messageCheck) {
+        this.context.$showError(`status: ${errorStatus}, ${errorMessage}.`);
+      } else {
+        this.context.$showError(`Unknown error (${errorStatus}).`);
+      }
     }
   }
 }
