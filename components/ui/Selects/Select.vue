@@ -1,12 +1,12 @@
 <template>
   <div class="select">
     <select :id="id" :name="name" class="select__field" @input="updateValue($event.target.value)">
-      <option v-if="placeholder" disabled selected>
-        {{ $t(placeholder) }}
+      <option v-if="placeholder" value="null" disabled selected>
+        {{ placeholder }}
       </option>
       <option
         v-for="option in optionsList"
-        :key="`${option.id}_${uuid}`"
+        :key="`${option.value}_${uuid}`"
         :disabled="option.disabled"
         :selected="option.selected"
         :value="option.value"
