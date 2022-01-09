@@ -5,7 +5,13 @@ export class ServiceBranches {
     this.context = app;
   }
 
-  async getSelect({ sortings = [], filters = {} } = {}) {
+  getSelect(branches) {
+    const branchSelectModel = new BranchesModel({ stateData: branches }).getSelectModel();
+
+    return branchSelectModel;
+  }
+
+  async get({ sortings = [], filters = {} } = {}) {
     try {
       const params = {};
 
@@ -15,13 +21,9 @@ export class ServiceBranches {
 
       const response = await this.context.$api.branch.getBranches({ params });
 
-      const options = {
-        response,
-      };
+      const branchModel = new BranchesModel({ response }).getModel();
 
-      const branchSelectModel = new BranchesModel(options).getSelectModel();
-
-      return branchSelectModel;
+      return branchModel;
     } catch (error) {
       this.context.$showError(error);
     }

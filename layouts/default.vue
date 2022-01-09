@@ -18,7 +18,7 @@
   </div>
 </template>
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import NavBar from '@/components/Navbar';
 import InfoBar from '@/components/Infobar';
 import { routesConstants } from '@/constants/routes';
@@ -61,7 +61,12 @@ export default {
   computed: {
     ...mapGetters('messages', ['allMessages']),
   },
+  mounted() {
+    this.setBranches();
+  },
   methods: {
+    ...mapActions('branches', ['setBranches']),
+
     async logout() {
       await this.$services.auth.logout();
       this.$nuxt.$router.replace({ path: '/login' });

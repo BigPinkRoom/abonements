@@ -5,7 +5,7 @@ import { ServiceAbonementsFull } from './components/serviceAbonementsFull';
 export default class Services {
   constructor(app) {
     this.auth = new ServiceAuth(app);
-    this.branches = new ServiceBranches(app);
+    this.branch = new ServiceBranches(app);
     this.abonementsFull = new ServiceAbonementsFull(app);
   }
 }
