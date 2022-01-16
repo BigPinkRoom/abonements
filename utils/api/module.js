@@ -28,7 +28,7 @@ export default class ApiModule {
       const errorStatus = error.response.status;
 
       const messageCheck = [errorMessage !== 'undefined', errorMessage !== null, errorMessage !== ''].every(
-        (contain) => contain === true
+        (condition) => condition === true
       );
 
       if (messageCheck) {

@@ -3,12 +3,13 @@ export default async function ({ $services, $auth, $showError, redirect }) {
 
   if (process.server) {
     user = await $services.auth.getCurrentUser();
-    console.log('server user', user);
   } else {
     user = $auth.$storage.getUniversal('user');
   }
 
-  if (!user) {
+  const blockConditions = [!user, user?.user_role !== 'employee'].includes(true);
+
+  if (blockConditions) {
     $showError('Access denied');
 
     redirect('/login');

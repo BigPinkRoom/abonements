@@ -25,7 +25,7 @@ export class ServiceAuth {
       const errorStatus = error.response.status;
 
       const messageCheck = [errorMessage !== 'undefined', errorMessage !== null, errorMessage !== ''].every(
-        (contain) => contain === true
+        (condition) => condition === true
       );
 
       if (messageCheck) {
@@ -47,7 +47,7 @@ export class ServiceAuth {
       const errorStatus = error.response.status;
 
       const messageCheck = [errorMessage !== 'undefined', errorMessage !== null, errorMessage !== ''].every(
-        (contain) => contain === true
+        (condition) => condition === true
       );
 
       if (messageCheck) {
@@ -60,10 +60,7 @@ export class ServiceAuth {
 
   async getCurrentUser() {
     try {
-      console.log('service auth start');
       const answer = await this.context.$api.user.getCurrent();
-
-      console.log('answer service', answer);
 
       return answer;
     } catch (error) {
@@ -76,7 +73,7 @@ export class ServiceAuth {
       const errorStatus = error.response.status;
 
       const messageCheck = [errorMessage !== 'undefined', errorMessage !== null, errorMessage !== ''].every(
-        (contain) => contain === true
+        (condition) => condition === true
       );
 
       if (messageCheck) {
