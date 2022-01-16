@@ -6,15 +6,17 @@ import { RowsBodyEvents as RowsBodyEventsModel } from './components/model/rowsBo
 import { RowsHeadEvents as RowsHeadEventsModel } from './components/model/rowsHeadEvents';
 
 export class AbonementsFullModel extends Model {
-  constructor({ response, columnsOrder, eventsMonth, eventsYear }) {
+  constructor({ response = null, columnsOrder = [], eventsMonth = [], eventsYear = [] } = {}) {
     super();
 
-    this._decodedResponse = new DecodedResponse(response).getDecodedResponse();
+    if (response) {
+      this._decodedResponse = new DecodedResponse(response).getDecodedResponse();
 
-    this._rowsHead = new RowsHeadModel(this._decodedResponse, columnsOrder).getModel();
-    this._rowsBody = new RowsBodyModel(this._decodedResponse, columnsOrder).getModel();
-    this._rowsHeadEvents = new RowsHeadEventsModel(eventsMonth, eventsYear).getModel();
-    this._rowsBodyEvents = new RowsBodyEventsModel(this._decodedResponse, eventsMonth, eventsYear).getModel();
+      this._rowsHead = new RowsHeadModel(this._decodedResponse, columnsOrder).getModel();
+      this._rowsBody = new RowsBodyModel(this._decodedResponse, columnsOrder).getModel();
+      this._rowsHeadEvents = new RowsHeadEventsModel(eventsMonth, eventsYear).getModel();
+      this._rowsBodyEvents = new RowsBodyEventsModel(this._decodedResponse, eventsMonth, eventsYear).getModel();
+    }
   }
 
   getModel() {
@@ -23,6 +25,15 @@ export class AbonementsFullModel extends Model {
       rowsBody: this._rowsBody,
       rowsHeadEvents: this._rowsHeadEvents,
       rowsBodyEvents: this._rowsBodyEvents,
+    };
+  }
+
+  getEmptyModel() {
+    return {
+      rowsHead: [],
+      rowsBody: [],
+      rowsHeadEvents: [],
+      rowsBodyEvents: [],
     };
   }
 }
