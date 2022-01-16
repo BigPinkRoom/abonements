@@ -31,4 +31,10 @@ export default class User extends ApiModule {
 
     return answer;
   }
+
+  async getCurrent() {
+    const answer = await this.request('/auth/user', 'get');
+
+    return answer;
+  }
 }

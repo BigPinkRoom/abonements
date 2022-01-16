@@ -53,7 +53,7 @@ export default {
           property: false,
         },
         options: {
-          expires: new Date(new Date().getTime() + 20000000000).getTime(),
+          expires: new Date(new Date().getTime() + 20000000000).getTime(), // TODO
           maxAge: 31622400,
           domain: 'localhost:3000',
         },

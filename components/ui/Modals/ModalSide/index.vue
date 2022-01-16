@@ -73,7 +73,7 @@ export default {
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  width: 300px;
+  width: 400px;
   height: 100%;
   padding: 0.75rem;
 

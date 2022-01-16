@@ -40,7 +40,16 @@ export class ServiceAbonementsFull extends ServicesCommon {
 
       return abonementsFullModel;
     } catch (error) {
+      window.onNuxtReady(() => {
+        this.context.router.push('/login');
+      }); // TODO
       this.context.$showError(error);
+      return {
+        rowsHead: [],
+        rowsBody: [],
+        rowsHeadEvents: [],
+        rowsBodyEvents: [],
+      };
     }
   }
 }
