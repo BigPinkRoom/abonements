@@ -71,7 +71,7 @@
     },
     "client": {
       "add": {
-        "title": "Add new client",
+        "title": "Add new family",
         "fieldsets": {
           "client": {
             "label": "Client",
@@ -95,7 +95,7 @@
             }
           },
           "relatives": {
-            "label": "Responsible parent",
+            "label": "Parents",
             "fields": {
               "name": {
                 "label": "Name",
@@ -147,7 +147,7 @@
         }
       },
       "edit": {
-        "title": "Edit client",
+        "title": "Family edit",
         "fieldsets": {
           "client": {
             "label": "Client",

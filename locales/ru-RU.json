@@ -71,10 +71,10 @@
     },
     "client": {
       "add": {
-        "title": "Добавить клиента",
+        "title": "Добавить семью",
         "fieldsets": {
           "client": {
-            "label": "Клиент",
+            "label": "Дети",
             "fields": {
               "surname": {
                 "label": "Фамилия",
@@ -95,7 +95,7 @@
             }
           },
           "relatives": {
-            "label": "Ответственный родитель",
+            "label": "Родители",
             "fields": {
               "name": {
                 "label": "Имя",
@@ -147,7 +147,7 @@
         }
       },
       "edit": {
-        "title": "Редактировать клиента",
+        "title": "Редактировать семью",
         "fieldsets": {
           "client": {
             "label": "Клиент",
