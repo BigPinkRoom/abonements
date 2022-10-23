@@ -5,46 +5,42 @@ $max-lg: 1200px;
 
 $color-white: #ffffff;
 
-$color-green-lighter: #9eef88;
-$color-green-light: #7aca67;
-$color-green: #57a746;
-$color-green-dark-light: #338526;
-$color-green-dark: #006400;
+$color-green-lighter: #eef6ec;
+$color-green-light: #c2ddbc;
+$color-green: #23850e;
 
-$color-warning: #bc0038;
+$color-red: #bc0038;
 
 $color-gray: gray;
 
 :root {
-  --color-primary-lighter: #{$color-green-lighter};
-  --color-primary-light: #{$color-green-light};
-  --color-primary: #{$color-green};
-  --color-primary-dark-light: #{$color-green-dark-light};
-  --color-primary-dark: #{$color-green-dark};
+  --color-main-lighter: #{$color-green-lighter};
+  --color-main-light: #{$color-green-light};
+  --color-main: #{$color-green};
 
   --color-secondary: #{$color-gray};
 
   --color-tertiary: #{$color-white};
 
-  --color-warning: #{$color-warning};
+  --color-warning: #{$color-red};
+
+  --color-white: #{$color-white};
 
   --color-test: #ccc;
 
   @media screen {
     &[data-theme='dark'] {
-      --color-primary-lighter: #{$color-green-lighter};
-      --color-primary-light: #{$color-green-light};
-      --color-primary: #{$color-green-lighter};
-      --color-primary-dark-light: #{$color-green-dark-light};
-      --color-primary-dark: #{$color-green-dark};
+      // --color-main-lighter: #{$color-main-lighter};
+      // --color-main-light: #{$color-main-light};
+      // --color-main: #{$color-main-lighter};
 
-      --color-secondary: #{$color-gray};
+      // --color-secondary: #{$color-gray};
 
-      --color-tertiary: #{$color-white};
+      // --color-tertiary: #{$color-white};
 
-      --color-warning: #{$color-warning};
+      // --color-warning: #{$color-warning};
 
-      --color-test: #999;
+      // --color-test: #999;
     }
   }
 }

@@ -68,11 +68,11 @@ export default {
   color: $color-white;
   text-align: center;
 
-  background-color: $color-green;
+  background-color: var(--color-main);
 
   &__message {
     &_error {
-      background-color: $color-warning;
+      background-color: var(--color-warning);
     }
   }
 }

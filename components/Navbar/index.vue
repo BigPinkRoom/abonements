@@ -65,7 +65,7 @@ export default {
   width: 100%;
   padding: 0.6rem 1rem;
 
-  background-color: $color-green-dark;
+  background-color: var(--color-main);
 
   &__right {
     display: flex;
@@ -79,7 +79,7 @@ export default {
     justify-content: center;
     margin-right: 1.25rem;
 
-    color: $color-green;
+    color: var(--color-main);
     font-size: 1rem;
     text-transform: uppercase;
 
@@ -88,7 +88,7 @@ export default {
     }
 
     & a {
-      color: $color-green-light;
+      color: var(--color-white);
       line-height: 1.35;
       text-decoration: none;
     }

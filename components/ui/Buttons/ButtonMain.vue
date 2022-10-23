@@ -34,7 +34,7 @@ export default {
 
   color: var(--color-tertiary);
 
-  background-color: var(--color-primary-dark);
+  background-color: var(--color-main);
   border: 0;
 
   cursor: pointer;

@@ -8,7 +8,7 @@
       @close="closeModalSide"
       :title="$t(`forms.client.${actionType}.title`)"
     >
-      <template #content><client-edit :selected-client-data="null" /></template>
+      <template #content><client-add :selected-client-data="null" /></template>
       <template #footer>
         <footer-main />
       </template>
@@ -25,7 +25,7 @@
 <script>
 import AbonementsTable from '@/components/AbonementsTable';
 import ModalSide from '@/components/ui/Modals/ModalSide';
-import ClientEdit from '@/components/ui/Modals/ModalSide/components/ContentClientEdit';
+import ClientAdd from '@/components/ui/Modals/ModalSide/components/ContentClientAdd';
 import FooterMain from '@/components/ui/Modals/ModalSide/components/FooterMain';
 
 export default {
@@ -34,7 +34,7 @@ export default {
   components: {
     AbonementsTable,
     ModalSide,
-    ClientEdit,
+    ClientAdd,
     FooterMain,
   },
   data() {
