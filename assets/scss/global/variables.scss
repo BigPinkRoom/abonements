@@ -26,8 +26,6 @@ $color-gray: gray;
 
   --color-white: #{$color-white};
 
-  --color-test: #ccc;
-
   @media screen {
     &[data-theme='dark'] {
       // --color-main-lighter: #{$color-main-lighter};
@@ -39,8 +37,6 @@ $color-gray: gray;
       // --color-tertiary: #{$color-white};
 
       // --color-warning: #{$color-warning};
-
-      // --color-test: #999;
     }
   }
 }
