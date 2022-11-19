@@ -73,9 +73,9 @@ export default {
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  width: 450px;
+  width: 45rem;
   height: 100%;
-  padding: 0.75rem;
+  padding: 1.2rem;
 
   background-color: #fff;
 
@@ -88,7 +88,7 @@ export default {
   &_left {
     left: 0;
 
-    box-shadow: 9px 0px 15px -5px rgba(34, 60, 80, 0.2);
+    box-shadow: 0.9rem 0 1.5rem -0.5rem rgba(34, 60, 80, 0.2);
   }
 
   &_right {
@@ -96,7 +96,7 @@ export default {
   }
 
   &__title {
-    margin-bottom: 0.75rem;
+    margin-bottom: 1.2rem;
   }
 
   &__content {
@@ -107,7 +107,7 @@ export default {
     display: flex;
     justify-content: space-between;
     margin-top: auto;
-    padding: 0.25rem;
+    padding: 0.4rem;
 
     // TODO
     border-top: 1px solid black;

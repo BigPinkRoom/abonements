@@ -63,7 +63,7 @@ export default {
   }
 
   &__item {
-    margin-right: 0.75rem;
+    margin-right: 1.2rem;
   }
 
   &__item:last-child {

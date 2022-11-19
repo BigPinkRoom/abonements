@@ -126,12 +126,12 @@ export default {
 .form {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding: 1.6rem;
 
   &__item {
     display: flex;
     flex-direction: column;
-    margin-bottom: 1rem;
+    margin-bottom: 1.6rem;
 
     &:last-child {
       margin-bottom: 0;
@@ -139,7 +139,7 @@ export default {
   }
 
   &__label {
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.4rem;
   }
 }
 </style>

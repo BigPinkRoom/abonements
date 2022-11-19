@@ -27,7 +27,7 @@ export default {
 
 <style lang="scss" scoped>
 .button {
-  padding: 0.4rem;
+  padding: 0.6rem;
 
   color: var(--color-tertiary);
 

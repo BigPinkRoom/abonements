@@ -53,17 +53,17 @@ export default {
   border-spacing: 0;
 
   & th {
-    padding: 0.4rem;
+    padding: 0.25rem;
 
-    border: 1px solid green;
+    border: 0.1rem solid green;
   }
 
   & td {
-    border: 1px solid green;
+    border: 0.1rem, solid green;
   }
 
   & tr {
-    height: 22px;
+    height: 2.2rem;
   }
 }
 

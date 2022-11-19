@@ -27,11 +27,11 @@ export default {
   position: relative;
 
   // padding: 0.4rem;
-  width: 1.75rem;
-  height: 1.75rem;
+  width: 2.8rem;
+  height: 2.8rem;
 
   background-color: var(--color-tertiary);
-  border: 1px solid var(--color-secondary);
+  border: 1rem solid var(--color-secondary);
   border-radius: 50%;
 
   cursor: pointer;
@@ -42,7 +42,7 @@ export default {
     left: 50%;
 
     width: 60%;
-    height: 2px;
+    height: 2rem;
 
     background-color: var(--color-warning);
     border-radius: 25%;
@@ -57,7 +57,7 @@ export default {
     left: 50%;
 
     width: 60%;
-    height: 2px;
+    height: 2rem;
 
     background-color: var(--color-warning);
     border-radius: 25%;
@@ -68,7 +68,7 @@ export default {
 
   &__symbol {
     color: var(--color-warning);
-    font-size: 32px;
+    font-size: 3.2rem;
     line-height: 0.88;
   }
 }

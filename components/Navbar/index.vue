@@ -63,7 +63,7 @@ export default {
 .navbar {
   display: flex;
   width: 100%;
-  padding: 0.6rem 1rem;
+  padding: 1.2rem 1rem;
 
   background-color: var(--color-main);
 
@@ -80,7 +80,6 @@ export default {
     margin-right: 1.25rem;
 
     color: var(--color-main);
-    font-size: 1rem;
     text-transform: uppercase;
 
     &:last-child {

@@ -46,11 +46,11 @@ export default {
   width: 100%;
 
   &__left {
-    min-width: 100px;
+    min-width: 10rem;
   }
 
   &__right {
-    min-width: 100px;
+    min-width: 10rem;
   }
 }
 </style>

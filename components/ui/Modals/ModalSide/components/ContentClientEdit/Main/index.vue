@@ -83,7 +83,7 @@ export default {
 <style lang="scss" scoped>
 .client-main {
   &__item {
-    margin-bottom: 0.75rem;
+    margin-bottom: 1.2rem;
   }
 
   &__item:last-child {

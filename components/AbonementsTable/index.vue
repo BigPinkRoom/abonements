@@ -86,7 +86,7 @@ export default {
   }
 
   &__add {
-    margin-bottom: 1rem;
+    margin-bottom: 1.6rem;
   }
 
   &__secondary-table {

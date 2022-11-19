@@ -87,7 +87,7 @@ export default {
 
   &__infobar {
     position: fixed;
-    top: 2.5rem;
+    top: 4rem;
 
     width: 100%;
   }

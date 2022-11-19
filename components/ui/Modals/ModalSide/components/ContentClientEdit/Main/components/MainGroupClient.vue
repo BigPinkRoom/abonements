@@ -84,7 +84,7 @@ export default {
 
   &__close {
     position: absolute;
-    top: -5px;
+    top: -0.5rem;
     right: 0;
   }
 }

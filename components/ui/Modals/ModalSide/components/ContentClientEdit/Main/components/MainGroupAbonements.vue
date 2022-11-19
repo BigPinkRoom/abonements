@@ -70,7 +70,7 @@ export default {
 
 <style lang="scss" scoped>
 .client-main__fieldset {
-  padding: 0.75rem;
+  padding: 1.2rem;
 }
 
 .client-main-abonement {
@@ -85,7 +85,7 @@ export default {
     flex-direction: column;
     width: 50%;
 
-    margin-right: 0.75rem;
+    margin-right: 1.2rem;
   }
 
   &__column:last-child {

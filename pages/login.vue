@@ -50,14 +50,14 @@ export default {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: calc(100vh - 2.5rem);
+  height: calc(100vh - 4rem);
 
   background-color: #ccc;
 }
 
 .title {
   color: #eee;
-  font-size: 2rem;
+  font-size: 3.2rem;
   font-family: Arial, sans-serif;
 
   text-transform: uppercase;

@@ -66,7 +66,7 @@ export default {
   align-items: center;
   justify-content: left;
   width: 100%;
-  height: calc(100vh - 2.5rem);
+  height: calc(100vh - 4rem);
 
   background-color: var(--color-white);
 }
