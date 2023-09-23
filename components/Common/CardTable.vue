@@ -77,6 +77,56 @@ export default {
         }
       }
     }
+    &-td {
+      font-size: 1.4rem;
+      color: var(--color-main-tertiary-light);
+
+      border: 1px solid var(--color-main-light);
+      &:last-child {
+        border-right: 0;
+      }
+      &:first-child {
+        border-left: 0;
+      }
+    }
+  }
+  &__name {
+    flex-direction: column;
+
+    padding: 0.4rem 1.8rem;
+
+    border-right: 0;
+    border-top: 0;
+
+    text-align: left;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--color-main-tertiary);
+    &--surname {
+      display: block;
+
+      font-weight: 300;
+      color: var(--color-main-tertiary-light);
+    }
+  }
+  &__add {
+  }
+  &__edit {
+    cursor: pointer;
+  }
+  &__button {
+    display: block;
+    width: calc(100% - 8px);
+    padding: 6px;
+    margin: 4px;
+
+    color: var(--color-main);
+
+    border: 1px solid var(--color-main-light);
+    border-radius: 5px;
+    background-color: var(--color-main-lighter);
+
+    cursor: pointer;
   }
 }
 </style>

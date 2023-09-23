@@ -11,7 +11,7 @@
     </div>
 
     <div class="abonements-table__add">
-      <v-button text="Add new client" @click="emitNewClient" />
+       <v-button text="Add new client" @click="emitNewClient" />
     </div>
 
     <button @click="testCliack">test</button>
@@ -19,9 +19,9 @@
 </template>
 
 <script>
-import { DateTime } from 'luxon';
-import Table from '@/components/ui/Tables/TableMain';
 import Button from '@/components/ui/Buttons/ButtonMain';
+import Table from '@/components/ui/Tables/TableMain';
+import { DateTime } from 'luxon';
 
 export default {
   name: 'AbonementsTable',

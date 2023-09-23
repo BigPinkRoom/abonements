@@ -1,6 +1,6 @@
 <template>
   <fieldset class="client-main__fieldset">
-    <CardTable class="card-table__wrapper--green">
+    <card-table class="card-table__wrapper--green">
       <template #title>
         <legend class="card-table__title card-table__title--green">
           {{ $t(`forms.client.add.fieldsets.client.label`) }}
@@ -14,6 +14,31 @@
               <td class="card-table__table-title-td card-table__table-title-td--green">Возраст</td>
               <td class="card-table__table-title-td card-table__table-title-td--green">Пол</td>
               <td class="card-table__table-title-td card-table__table-title-td--green">Действия</td>
+            </tr>
+            <tr>
+              <td class="card-table__table-td card-table__name">
+                Неличка <span class="card-table__name--surname">Алексеева</span>
+              </td>
+              <td class="card-table__table-td">3 года</td>
+              <td class="card-table__table-td"><img src="@/static/icons/girl.svg" alt="" /></td>
+              <td class="card-table__table-td">
+                <img class="card-table__edit" src="@/static/icons/edit.svg" alt="" />
+              </td>
+            </tr>
+            <tr>
+              <td class="card-table__table-td card-table__name">
+                Зайка <span class="card-table__name--surname">Степашкина</span>
+              </td>
+              <td class="card-table__table-td">3 года</td>
+              <td class="card-table__table-td"><img src="@/static/icons/girl.svg" alt="" /></td>
+              <td class="card-table__table-td">
+                <img class="card-table__edit" src="@/static/icons/edit.svg" alt="" />
+              </td>
+            </tr>
+            <tr>
+              <td colspan="4" class="card-table__add">
+                <button class="card-table__button">+ Добавить ребёнка</button>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -55,7 +80,7 @@
           :placeholder="$t(`forms.client.add.fieldsets.client.fields.birthday.placeholder`)"
         ></v-input>
       </template>
-    </CardTable>
+    </card-table>
   </fieldset>
 </template>
 
