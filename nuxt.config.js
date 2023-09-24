@@ -37,7 +37,7 @@ export default {
     prefetch: true,
     preload: true,
     families: {
-      // 'Open+Sans': true,
+      'Open+Sans': true,
     },
   },
 
