@@ -97,6 +97,9 @@ export default {
 
   &__title {
     margin-bottom: 1.2rem;
+
+    font-size: 2rem;
+    text-transform: uppercase;
   }
 
   &__content {

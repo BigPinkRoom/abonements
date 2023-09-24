@@ -37,7 +37,9 @@
             </tr>
             <tr>
               <td colspan="4" class="card-table__add">
-                <button class="card-table__button">+ Добавить ребёнка</button>
+                <button class="card-table__button card-table__button--add" @click.prevent="addOneMoreChildren">
+                  + Добавить ребёнка
+                </button>
               </td>
             </tr>
           </tbody>
@@ -114,6 +116,9 @@ export default {
     close() {
       this.$emit('close');
     },
+    addOneMoreChildren() {
+      this.$emit('addOneMoreChildren');
+    },
   },
   mounted() {
     this.uuid = uuid.v4();
@@ -136,6 +141,21 @@ export default {
     position: absolute;
     top: -0.5rem;
     right: 0;
+  }
+}
+.card-table {
+  &__table-title-td {
+    font-size: 1.4rem;
+  }
+  &__name {
+    &--surname {
+      font-size: 1.2rem;
+    }
+  }
+  &__button {
+    &--add {
+      font-size: 1.4rem;
+    }
   }
 }
 </style>

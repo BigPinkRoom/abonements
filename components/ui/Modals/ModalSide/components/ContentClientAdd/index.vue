@@ -1,14 +1,7 @@
 <template>
   <form class="client-main">
     <div class="client-main__item" v-for="(client, index) in clientsList" :key="index">
-      <fieldset-client-add />
-    </div>
-
-    <div class="client-main__item">
-      <v-button
-        :text="$t(`forms.client.${actionType}.fields.addOneMoreClient.label`)"
-        @click="addOneMoreClientHandler"
-      />
+      <fieldset-client-add @addOneMoreChildren="addOneMoreClientHandler" />
     </div>
 
     <div class="client-main__item">
@@ -32,7 +25,6 @@
 </template>
 
 <script>
-import vButton from '@/components/ui/Buttons/ButtonMain';
 import vCheckbox from '@/components/ui/Checkboxes/MainCheckbox';
 import FieldsetClientAdd from './components/AddGroupClient';
 import FieldsetAbonements from './components/AddGroupAbonements';
@@ -41,7 +33,6 @@ import FieldsetRelatives from './components/AddGroupRelatives';
 export default {
   name: 'ClientEditMain',
   components: {
-    vButton,
     vCheckbox,
     FieldsetClientAdd,
     FieldsetAbonements,
