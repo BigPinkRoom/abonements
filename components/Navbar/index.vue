@@ -88,6 +88,7 @@ export default {
 
     & a {
       color: var(--color-white);
+      font-size: 1.2rem;
       line-height: 1.35;
       text-decoration: none;
     }
