@@ -42,6 +42,10 @@ export default {
 .field {
   &__input {
     width: 100%;
+    height: 3.4rem;
+
+    border: 1px solid var(--color-main-tertiary-light-2);
+    border-radius: 3px;
   }
 }
 </style>
