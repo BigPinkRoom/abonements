@@ -15,7 +15,8 @@ $color-pink-light-extra: #f5ecf2;
 
 $color-gray: #454545;
 $color-gray-light: #646464;
-$color-gray-lighter: #a2a2a2;
+$color-gray-light-2: #a2a2a2;
+$color-gray-lighter: #cbcbcb;
 $color-gray-light-extra: #cbcbcb;
 $color-gray-lightest: #f3f3f3;
 
@@ -32,6 +33,7 @@ $color-red: #bc0038;
 
   --color-main-tertiary: #{$color-gray};
   --color-main-tertiary-light: #{$color-gray-light};
+  --color-main-tertiary-light-2: #{$color-gray-light-2};
   --color-main-tertiary-lighter: #{$color-gray-lighter};
   --color-main-tertiary-light-extra: #{$color-gray-light-extra};
   --color-main-tertiary-lightest: #{$color-gray-lightest};
