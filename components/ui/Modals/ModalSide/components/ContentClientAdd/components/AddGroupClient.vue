@@ -9,33 +9,49 @@
       <template #table-title>
         <div class="card-table__table-title card-table__table-title--green">
           <div class="card-table__table-tr">
-            <td class="card-table__table-title-td card-table__table-title-td--green">Имя / фамилия</td>
-            <td class="card-table__table-title-td card-table__table-title-td--green">Возраст</td>
-            <td class="card-table__table-title-td card-table__table-title-td--green">Пол</td>
-            <td class="card-table__table-title-td card-table__table-title-td--green">Действия</td>
+            <div class="card-table__table-title-td card-table__table-title--name card-table__table-title-td--green">
+              Имя / фамилия
+            </div>
+            <div class="card-table__table-title-td card-table__table-title--age card-table__table-title-td--green">
+              Возраст
+            </div>
+            <div class="card-table__table-title-td card-table__table-title--gender card-table__table-title-td--green">
+              Пол
+            </div>
+            <div class="card-table__table-title-td card-table__table-title--actions card-table__table-title-td--green">
+              Действия
+            </div>
           </div>
           <div class="card-table__table-tr">
-            <td class="card-table__table-td card-table__name">
+            <div class="card-table__table-td card-table--name">
               Неличка <span class="card-table__name--surname">Алексеева</span>
-            </td>
-            <td class="card-table__table-td card-table__age">3 года</td>
-            <td class="card-table__table-td"><img src="@/static/icons/girl.svg" alt="" /></td>
-            <td class="card-table__table-td">
-              <img class="card-table__edit" src="@/static/icons/edit.svg" alt="" />
-            </td>
+            </div>
+            <div class="card-table__table-td card-table--age">3 года</div>
+            <div class="card-table__table-td card-table--gender"><img src="@/static/icons/girl.svg" alt="" /></div>
+            <div class="card-table__table-td card-table--actions">
+              <img class="card-table__actions" src="@/static/icons/edit.svg" alt="" />
+            </div>
           </div>
           <div class="card-table__table-tr">
-            <td class="card-table__table-td card-table__name">
+            <div class="card-table__table-td card-table--name">
               Зайка <span class="card-table__name--surname">Степашкина</span>
-            </td>
-            <td class="card-table__table-td card-table__age">3 года</td>
-            <td class="card-table__table-td"><img src="@/static/icons/girl.svg" alt="" /></td>
-            <td class="card-table__table-td">
-              <img class="card-table__edit" src="@/static/icons/edit.svg" alt="" />
-            </td>
+            </div>
+            <div class="card-table__table-td card-table--age">3 года</div>
+            <div class="card-table__table-td card-table--gender"><img src="@/static/icons/girl.svg" alt="" /></div>
+            <div class="card-table__table-td card-table--actions">
+              <img class="card-table__actions" src="@/static/icons/edit.svg" alt="" />
+            </div>
           </div>
           <div class="card-table__table-tr">
             <div class="card-table__table-td card-table__table-td--edit" colspan="4">
+              <div class="card-table__name-title">
+                Алексей
+                <div class="card-table__name-title--surname">Иванов</div>
+              </div>
+              <div class="card-table__actions">
+                <img src="/icons/arrow_down_icon.svg" alt="" class="card-table__actions-img" />
+                <img src="/icons/ok_icon.svg" alt="" class="card-table__actions-img" />
+              </div>
               <div class="card-table__field">
                 <label class="card-table__label" :for="`clientSurname_${uuid}`">{{
                   $t(`forms.client.add.fieldsets.client.fields.surname.label`)
@@ -76,14 +92,15 @@
                   :placeholder="$t(`forms.client.add.fieldsets.client.fields.birthday.placeholder`)"
                 ></v-input>
               </div>
+              <v-radio-button name="genderType" :input-data="inputData" class="card-table__radio" />
             </div>
           </div>
           <tr>
-            <td colspan="4" class="card-table__add">
+            <div colspan="4" class="card-table__add">
               <button class="card-table__button card-table__button--add" @click.prevent="addOneMoreChildren">
                 + Добавить ребёнка
               </button>
-            </td>
+            </div>
           </tr>
         </div>
       </template>
@@ -98,6 +115,7 @@
 
 <script>
 import vInput from '@/components/ui/Fields/InputTable';
+import vRadioButton from '@/components/ui/RadioButtons/MainRadioButton';
 import { uuid } from 'vue-uuid';
 import vCloseButton from '@/components/ui/Buttons/ButtonClose.vue';
 import CardTable from '@/components/Common/CardTable.vue';
@@ -108,6 +126,7 @@ export default {
     vInput,
     vCloseButton,
     CardTable,
+    vRadioButton,
   },
   props: {
     actionType: {
@@ -120,6 +139,18 @@ export default {
   data() {
     return {
       uuid: '',
+      inputData: [
+        {
+          id: 0,
+          value: 0,
+          label: 'Мальчик',
+        },
+        {
+          id: 1,
+          value: 1,
+          label: 'Девочка',
+        },
+      ],
     };
   },
   methods: {
@@ -155,42 +186,117 @@ export default {
 }
 .card-table {
   &__table-title-td {
-    padding: 0.4rem 1.8rem;
+    padding: 0.4rem 0;
 
     font-size: 1.4rem;
     white-space: nowrap;
+
+    border-left: 0;
+    &:first-child {
+      padding-left: 1.8rem;
+
+      text-align: left;
+    }
   }
+  &__table-title {
+    &--name {
+      width: 17.6rem;
+    }
+    &--age {
+      width: 7rem;
+    }
+    &--gender {
+      width: 5.2rem;
+    }
+    &--actions {
+      width: 9.4rem;
+    }
+  }
+
+  &__table-tr {
+    display: flex;
+    align-items: center;
+  }
+
   &__table-td {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3.8rem;
+
+    border-top: 0;
+    border-left: 0;
+
+    &:last-child {
+      border-right: 0;
+    }
+
     &--edit {
       display: flex;
       flex-wrap: wrap;
+      justify-content: space-between;
       padding: 1.2rem 1.4rem;
+
+      border-left: 6px solid var(--color-main-light);
     }
   }
-  &__name {
+  &--name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
     width: 17.6rem;
+    padding-left: 1.8rem;
 
     &--surname {
       font-size: 1.2rem;
     }
   }
+  &--age {
+    width: 7rem;
+  }
+  &--gender {
+    width: 5.2rem;
+  }
+  &--actions {
+    width: 9.4rem;
+  }
 
-  &__age {
-    width: 8rem;
-  }
-  &__button {
-    &--add {
-      font-size: 1.4rem;
-    }
-  }
   &__title {
     font-size: 16px;
     font-weight: 500;
   }
+
+  &__name-title {
+    width: 17.6rem;
+    margin-bottom: 1.4rem;
+
+    text-align: left;
+    font-size: 14px;
+    font-weight: 700;
+
+    &--surname {
+      font-size: 12px;
+      font-weight: 500;
+    }
+  }
+
+  &__actions {
+    &-img {
+      margin-right: 10px;
+      margin-bottom: 10px;
+
+      cursor: pointer;
+    }
+  }
+
   &__field {
     position: relative;
 
+    width: 17.1rem;
+
     margin-bottom: 3.2rem;
+    // margin-right: 12px;
   }
   &__label {
     position: absolute;
@@ -204,6 +310,17 @@ export default {
     text-align: left;
 
     background-color: var(--color-white);
+  }
+
+  &__radio {
+    display: flex;
+    align-items: center;
+  }
+
+  &__button {
+    &--add {
+      font-size: 1.4rem;
+    }
   }
 }
 </style>
