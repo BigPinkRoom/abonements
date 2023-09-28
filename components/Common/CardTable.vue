@@ -82,12 +82,12 @@ export default {
       color: var(--color-main-tertiary-light);
 
       border: 1px solid var(--color-main-light);
-      &:last-child {
-        border-right: 0;
-      }
-      &:first-child {
-        border-left: 0;
-      }
+      // &:last-child {
+      //   border-right: 0;
+      // }
+      // &:first-child {
+      //   border-left: 0;
+      // }
     }
   }
   &__name {
