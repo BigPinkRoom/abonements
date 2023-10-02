@@ -22,31 +22,28 @@
               Действия
             </div>
           </div>
-          <div class="card-table__table-tr">
+          <div class="card-table__table-tr" v-for="item in isNotActiveChildrenBefore" :key="item.id">
             <div class="card-table__table-td card-table--name">
-              Неличка <span class="card-table__name--surname">Алексеева</span>
+              {{ item.name }} <span class="card-table__name--surname">{{ item.surname }}</span>
             </div>
-            <div class="card-table__table-td card-table--age">3 года</div>
-            <div class="card-table__table-td card-table--gender"><img src="@/static/icons/girl.svg" alt="" /></div>
+            <div class="card-table__table-td card-table--age">{{ item.birthday }}</div>
+            <div class="card-table__table-td card-table--gender"><img :src="getGenderImage(item.gender)" alt="" /></div>
             <div class="card-table__table-td card-table--actions">
-              <img class="card-table__actions" src="@/static/icons/edit.svg" alt="" />
+              <div class="card-table__actions">
+                <img
+                  class="card-table__actions--edit"
+                  src="@/static/icons/edit.svg"
+                  @click="changeEdit(item.id)"
+                  alt=""
+                />
+              </div>
             </div>
           </div>
-          <div class="card-table__table-tr">
-            <div class="card-table__table-td card-table--name">
-              Зайка <span class="card-table__name--surname">Степашкина</span>
-            </div>
-            <div class="card-table__table-td card-table--age">3 года</div>
-            <div class="card-table__table-td card-table--gender"><img src="@/static/icons/girl.svg" alt="" /></div>
-            <div class="card-table__table-td card-table--actions">
-              <img class="card-table__actions" src="@/static/icons/edit.svg" alt="" />
-            </div>
-          </div>
-          <div class="card-table__table-tr">
+          <div class="card-table__table-tr" v-for="itemActive in isActiveChild" :key="itemActive.id">
             <div class="card-table__table-td card-table__table-td--edit" colspan="4">
               <div class="card-table__name-title">
-                Алексей
-                <div class="card-table__name-title--surname">Иванов</div>
+                {{ itemActive.name }}
+                <div class="card-table__name-title--surname">{{ itemActive.surname }}</div>
               </div>
               <div class="card-table__actions">
                 <img src="/icons/arrow_down_icon.svg" alt="" class="card-table__actions-img" />
@@ -60,6 +57,7 @@
                   :id="`clientSurname_${uuid}`"
                   type="text"
                   :placeholder="$t(`forms.client.add.fieldsets.client.fields.surname.placeholder`)"
+                  v-model="itemActive.surname"
                 ></v-input>
               </div>
               <div class="card-table__field">
@@ -70,6 +68,7 @@
                   :id="`clientName_${uuid}`"
                   type="text"
                   :placeholder="$t(`forms.client.add.fieldsets.client.fields.name.placeholder`)"
+                  v-model="itemActive.name"
                 ></v-input>
               </div>
               <div class="card-table__field">
@@ -80,6 +79,7 @@
                   :id="`clientPatronymic_${uuid}`"
                   type="text"
                   :placeholder="$t(`forms.client.add.fieldsets.client.fields.patronymic.placeholder`)"
+                  v-model="itemActive.patronymic"
                 ></v-input>
               </div>
               <div class="card-table__field">
@@ -90,15 +90,42 @@
                   :id="`clientBirthday_${uuid}`"
                   type="text"
                   :placeholder="$t(`forms.client.add.fieldsets.client.fields.birthday.placeholder`)"
+                  v-model="itemActive.birthday"
                 ></v-input>
               </div>
-              <v-radio-button name="genderType" :input-data="inputData" class="card-table__radio" />
+              <v-radio-button
+                name="genderType"
+                :input-data="inputData"
+                class="card-table__radio"
+                v-model="itemActive.gender"
+              />
+              <div class="card-table__delete">
+                <div class="card-table__delete-text">Удалить</div>
+                <img src="/icons/delete_icon.svg" alt="" class="card-table__delete-img" />
+              </div>
             </div>
           </div>
-          <tr>
-            <div colspan="4" class="card-table__add">
+          <div class="card-table__table-tr" v-for="item in isNotActiveChildrenAfter" :key="item.id">
+            <div class="card-table__table-td card-table--name">
+              {{ item.name }} <span class="card-table__name--surname">{{ item.surname }}</span>
+            </div>
+            <div class="card-table__table-td card-table--age">{{ item.birthday }}</div>
+            <div class="card-table__table-td card-table--gender"><img :src="getGenderImage(item.gender)" alt="" /></div>
+            <div class="card-table__table-td card-table--actions">
+              <div class="card-table__actions">
+                <img
+                  class="card-table__actions--edit"
+                  src="@/static/icons/edit.svg"
+                  @click="changeEdit(item.id)"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+          <tr class="card-table__tr-add" v-if="showOneMoreChild">
+            <div class="card-table__add">
               <button class="card-table__button card-table__button--add" @click.prevent="addOneMoreChildren">
-                + Добавить ребёнка
+                {{ addChildText }}
               </button>
             </div>
           </tr>
@@ -151,14 +178,96 @@ export default {
           label: 'Девочка',
         },
       ],
+      currentChildId: 1,
+      showOneMoreChild: true,
+      children: [
+        // {
+        //   id: 1,
+        //   name: 'Неличка',
+        //   surname: 'Алексеева',
+        //   patronymic: 'Ивановна',
+        //   birthday: '01.03.2020',
+        //   gender: 1,
+        // },
+        // {
+        //   id: 2,
+        //   name: 'Зайка',
+        //   surname: 'Степашкина',
+        //   patronymic: 'Борисовна',
+        //   birthday: '01.05.2021',
+        //   gender: 1,
+        // },
+        // {
+        //   id: 3,
+        //   name: 'Алексей',
+        //   surname: 'Иванов',
+        //   patronymic: 'Владимирович',
+        //   birthday: '01.01.2019',
+        //   gender: 2,
+        // },
+      ],
     };
+  },
+  computed: {
+    addChildText() {
+      if (this.children.length) {
+        return '+ Добавить ещё одного ребёнка';
+      } else {
+        return '+ Добавить ребёнка';
+      }
+    },
+    isNotActiveChildrenBefore() {
+      return this.children.filter((item) => {
+        return item.id !== this.currentChildId && item.id < this.currentChildId;
+      });
+    },
+    isNotActiveChildrenAfter() {
+      return this.children.filter((item) => {
+        return item.id !== this.currentChildId && item.id > this.currentChildId;
+      });
+    },
+    isActiveChild() {
+      return this.children.filter((item) => {
+        return item.id === this.currentChildId;
+      });
+    },
   },
   methods: {
     close() {
       this.$emit('close');
     },
     addOneMoreChildren() {
-      this.$emit('addOneMoreChildren');
+      if (!this.children.length) {
+        this.showOneMoreChild = false;
+
+        this.children.push({
+          id: this.currentChildId,
+          name: '',
+          surname: '',
+          patronymic: '',
+          birthday: '',
+          gender: 1,
+        });
+      } else {
+        this.children.push({
+          id: this.currentChildId + 1,
+          name: '',
+          surname: '',
+          patronymic: '',
+          birthday: '',
+          gender: 1,
+        });
+      }
+    },
+    getGenderImage(gender) {
+      if (gender === 1) {
+        return '/icons/girl.svg';
+      } else {
+        return '/icons/boy.svg';
+      }
+    },
+    changeEdit(id) {
+      this.currentChildId = id;
     },
   },
   mounted() {
@@ -282,6 +391,10 @@ export default {
   }
 
   &__actions {
+    &--edit {
+      cursor: pointer;
+    }
+
     &-img {
       margin-right: 10px;
       margin-bottom: 10px;
@@ -315,6 +428,32 @@ export default {
   &__radio {
     display: flex;
     align-items: center;
+  }
+
+  &__delete {
+    display: flex;
+
+    cursor: pointer;
+    &-img {
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+
+    &-text {
+      margin-right: 8px;
+
+      color: var(--color-warning);
+      font-size: 12px;
+    }
+  }
+
+  &__tr-add {
+    display: flex;
+    width: 100%;
+  }
+
+  &__add {
+    width: 100%;
   }
 
   &__button {
