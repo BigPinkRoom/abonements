@@ -11,4 +11,8 @@ export default class Client extends ApiModule {
   async getClients(params) {
     return await this.request('/clients/list', 'post', params);
   }
+
+  async setClient(client) {
+    return await this.request('clients/add', 'post', client);
+  }
 }
